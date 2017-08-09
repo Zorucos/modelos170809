@@ -1,9 +1,20 @@
+{% load fullcalendar_tags %}
+{% load static from staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Wunshgesichter{% endblock %}</title>
-        {% load staticfiles %}
+
+        <script type='text/javascript' src='{% static 'fullcalendar/moment.js' %}'></script>
+        {% fullcalendar_css %}        
+        {% fullcalendar_print_css %}        
+        {% fullcalendar_jquery %}
+        {% fullcalendar_jquery_ui %}
+        {% fullcalendar_javascript %}
+        {% calendar_init calendar_config_options %}
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="{% static 'apli/style.css' %}"/>
@@ -22,48 +33,38 @@
                         <div class="container-fluid">
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavBar">
-                                        <span class="sr-only">Desplegar / Ocultar Menu</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
+                                    <span class="sr-only">Desplegar / Ocultar Menu</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
                                 </button>
-
                                 <a href="{% url 'ingreso' %}" class="navbar-brand">TEST PAGINA</a>
                             </div>
 
                             <div class="collapse navbar-collapse" id="topNavBar">
                                 <ul class="nav navbar-nav">
 
-                                        <li role="presentation" class="{% block contacts_active %}{% endblock %}"><a href="{% url 'index_contact' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Kunde</a></li>
-                                        <li role="presentation" class="{% block models_active %}{% endblock %}"><a href="{% url 'index_model' %}"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Modelle</a></li>
-                                        <li role="presentation" class="{% block personas_active %}{% endblock %}"><a href="{% url 'index_personas' %}"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span> Ansprechparner</a></li>
-                                        <li role="presentation" class="{% block cotizaciones_active %}{% endblock %}"><a href="{% url 'index_cotizacion' %}"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> Angebot</a></li>
-                                        <li role="presentation" class="{% block ordenes_active %}{% endblock %}"><a href="{% url 'index_orden_compra' %}"><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span> Auftrag</a></li>
-                                        <li role="presentation" class="{% block projects_active %}{% endblock %}"><a href="{% url 'index_project' %}"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Projekt</a></li>
-                                        <li role="presentation" class="{% block calendario_active %}{% endblock %}"><a href="{% url 'index_calendario' %}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Kalendar</a></li>
-
-
-                                <div class="pull-right">
-                                    <form  method="GET" action="{% url 'busca' %}" class="navbar-form navbar-right" role="search" >
-                                        <input type="text" placeholder="Suchen" class="form-control" name="q" value="{{ request.GET.q }}">
-                                        <button type="submit" class="btn btn-primary ">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>
-                                    </form>
-                                </div>
-
-
-                                    <div class= "nav navbar-nav">
-                                    {% if request.user.is_authenticated %}
-                                        <li role="presentation" class="pull-right"><a href="{% url 'logout' %}" > <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout {{ user}} </a></li>
-                                        
-
+                                    <li role="presentation" class="{% block contacts_active %}{% endblock %}"><a href="{% url 'index_contact' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Kunde</a></li>
+                                    <li role="presentation" class="{% block models_active %}{% endblock %}"><a href="{% url 'index_model' %}"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Modelle</a></li>
+                                    <li role="presentation" class="{% block personas_active %}{% endblock %}"><a href="{% url 'index_personas' %}"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span> Ansprechparner</a></li>
+                                    <li role="presentation" class="{% block cotizaciones_active %}{% endblock %}"><a href="{% url 'index_cotizacion' %}"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> Angebot</a></li>
+                                    <li role="presentation" class="{% block ordenes_active %}{% endblock %}"><a href="{% url 'index_orden_compra' %}"><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span> Auftrag</a></li>
+                                    <li role="presentation" class="{% block projects_active %}{% endblock %}"><a href="{% url 'index_project' %}"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Projekt</a></li>
+                                    <li role="presentation" class="{% block calendario_active %}{% endblock %}"><a href="{% url 'calendar_by_user' %}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Kalendar</a></li>
+                                    <li role="presentation" >
+                                        <form  method="GET" action="{% url 'busca' %}" class="navbar-form navbar-right" role="search" >
+                                            <input type="text" placeholder="Suchen" class="form-control" name="q" value="{{ request.GET.q }}">
+                                            <button type="submit" class="btn btn-primary ">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </form>
+                                     </li>
+                                    <div class= "nav navbar-nav" >
+                                        {% if request.user.is_authenticated %}
+                                            <li role="presentation" class="pull-right"><a href="{% url 'logout' %}" > <span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout {{ user}} </a></li>
                                         {% endif %}
                                     </div>
-
-
-
-                                
+                                </ul>
                             </div>
                         </div>
                     </nav>
@@ -77,7 +78,6 @@
 
         <footer>
         </footer>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </body>
 </html>
