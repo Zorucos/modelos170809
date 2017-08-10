@@ -64,7 +64,7 @@ OPTIONS = """{  header: {
                 },
 
                 eventClick: function(event) {
-                    window.open(event.url);
+                    window.open(event.url, "_self");
                     return false;
                 }
 

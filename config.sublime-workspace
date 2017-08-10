@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"P",
+				"Proyecto"
+			],
+			[
 				"id",
 				"index_user\tfunction"
 			],
@@ -119,6 +123,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "fullcalendar/models.py",
+			"settings":
+			{
+				"buffer_size": 1294,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "apli/models.py",
+			"settings":
+			{
+				"buffer_size": 2651,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -182,10 +202,26 @@
 	},
 	"expanded_folders":
 	[
-		"/E/modelos170809"
+		"/E/modelos170809",
+		"/E/modelos170809/apli",
+		"/E/modelos170809/fullcalendar/migrations",
+		"/E/modelos170809/fullcalendar/migrations/__pycache__",
+		"/E/modelos170809/fullcalendar/static",
+		"/E/modelos170809/fullcalendar/templates",
+		"/E/modelos170809/fullcalendar/templates/fullcalendar",
+		"/E/modelos170809/WG"
 	],
 	"file_history":
 	[
+		"/E/modelos170809/fullcalendar/views.py",
+		"/E/modelos170809/apli/models.py",
+		"/E/modelos170809/fullcalendar/models.py",
+		"/E/modelos170809/fullcalendar/templates/fullcalendar/index.html",
+		"/E/modelos170809/fullcalendar/urls.py",
+		"/E/modelos170809/apli/urls.py",
+		"/E/modelos170809/apli/templates/apli/base.html",
+		"/E/modelos170809/apli/templates/apli/busca.html",
+		"/E/modelos170809/fullcalendar/templates/fullcalendar/base2.html",
 		"/E/MODELOCOS/WG legal/fullcalendar/templates/fullcalendar/base2.html",
 		"/E/MODELOCOS/WG legal/fullcalendar/templates/fullcalendar/calendar_init.html",
 		"/E/MODELOCOS/WG legal/fullcalendar/templates/fullcalendar/index.html",
@@ -304,9 +340,7 @@
 		"/E/DG/manage.py",
 		"/C/Users/DQ-PC/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
 		"/E/DG/DG2.sublime-workspace",
-		"/C/Users/DQ-PC/AppData/Roaming/Sublime Text 3/Packages/Anaconda/README.md",
-		"/C/Users/DQ-PC/AppData/Roaming/Sublime Text 3/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings",
-		"/E/DG/DG.sublime-workspace"
+		"/C/Users/DQ-PC/AppData/Roaming/Sublime Text 3/Packages/Anaconda/README.md"
 	],
 	"find":
 	{
@@ -385,14 +419,75 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "fullcalendar/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1294,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "apli/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								103,
+								103
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -429,7 +524,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 56.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
