@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'register.apps.RegisterConfig',
 
 ]
 
@@ -139,8 +140,8 @@ STATIC_URL = '/static/'
 SECURE_SSL_REDIRECT = False
 
 
-LOGIN_URL ='/login/'
-LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_URL ='/register/login/'
+LOGOUT_REDIRECT_URL = '/register/login/'
 LOGIN_REDIRECT_URL = '/apli/'
 
 CORS_REPLACE_HTTPS_REFERER      = False

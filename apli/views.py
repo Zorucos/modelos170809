@@ -13,7 +13,7 @@ from django.conf import settings #mail
 from django.http import HttpResponse
 from django.views.generic import CreateView # registration
 from django.contrib.auth import get_user_model #registration
-from .forms import UserForm, ClientCreateForm, RegisterForm
+from .forms import UserForm, ClientCreateForm
 from .utils import render_to_pdf #PDF
 from .models import Client, Persona, Proyecto
 from django.http import HttpResponseRedirect
@@ -57,7 +57,7 @@ class GeneratePDF(View):
         
 # test pdf
 
-# crear view de proeto por isma ABIR
+# crear view de proyeto por isma ABIR
 
 class ClienteCreateView(LoginRequiredMixin, CreateView):
     form_class = ClientCreateForm
@@ -73,41 +73,41 @@ class ClienteCreateView(LoginRequiredMixin, CreateView):
 #crar view de proyecto por isma CERRAR
 
 
-#register
-class RegisterView(CreateView):
-    form_class = RegisterForm
-    template_name = 'apli/register.html'
-    success_url = "/apli/index_contact"
-#register
+# #register
+# class RegisterView(CreateView):
+#     form_class = RegisterForm
+#     template_name = 'apli/register.html'
+#     success_url = "/apli/index_contact"
+# #register
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def index_contact(request):
     all_clients = Client.objects.all()
     return render(request, 'apli/index_contact.html', {'all_clients': all_clients})
 
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def index_model(request):
     all_models = Persona.objects.all()
     return render(request, 'apli/index_model.html', {'all_models': all_models})
 
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def index_project(request):
     all_projects = Proyecto.objects.all()
     return render(request, 'apli/index_project.html', {'all_projects': all_projects})
 
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def detail_contact(request, pk):
     client = get_object_or_404(Client, id=pk)
     all_projects = client.proyecto_set.all()
     return render(request, 'apli/detail_contact.html', {'client': client, 'all_projects': all_projects})
 
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def detail_model(request, persona_id):
     model = get_object_or_404(Persona, id=persona_id)
     return render(request, 'apli/detail_model.html', {'model': model})
 
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def busca(request):
     query = request.GET.get("q")
     querysetClients = Client.objects.all()
@@ -135,30 +135,30 @@ def busca(request):
 
     return render(request, 'apli/busca.html', {"busca_clients": querysetClients, "busca_personas": querysetPersonas, "busca_proyectos": querysetProyectos})
 
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def detail_project(request, pk):
     project = get_object_or_404(Proyecto, id=pk)
     return render(request, 'apli/detail_project.html', {'project': project})
 
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def ingreso(request):
     return render(request, 'apli/ingreso.html', )
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def prueba_ingreso(request):
     return render(request, 'apli/prueba_ingreso.html', )
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def index_calendario(request):
     return render(request, 'apli/index_calendario.html', )
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def index_cotizacion(request):
     return render(request, 'apli/index_cotizacion.html', )
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def index_home_page(request):
     return render(request, 'apli/index_home_page.html', )
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def index_orden_compra(request):
     return render(request, 'apli/index_orden_compra.html', )
-@login_required(login_url='/login/')
+@login_required(login_url='/register/login/')
 def index_personas(request):
     return render(request, 'apli/index_personas.html', )
 
