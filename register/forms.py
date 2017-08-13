@@ -1,16 +1,11 @@
 from django.contrib.auth.models import User
 from django import forms
-#from .models import Client
-from django.contrib.auth import get_user_model #regsitration
+
+from django.contrib.auth import get_user_model #registration
 
 User = get_user_model()
 
-class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
 
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password']
 
 
 # forma registro nuevo cliente ABRE

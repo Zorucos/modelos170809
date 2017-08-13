@@ -4,23 +4,18 @@ from django.core.urlresolvers import reverse_lazy #delete
 from django.http import HttpResponse #pdf
 from django.template.loader import get_template #pdf
 from django.views.generic import View
-from django.contrib.auth.decorators import login_required #login  def
-from django.contrib.auth.mixins import LoginRequiredMixin #login  viw 
+from django.contrib.auth.decorators import login_required # requisito login  def
+from django.contrib.auth.mixins import LoginRequiredMixin # requisito login  viw 
 from django.db.models import Q #busqueda
 from django.core.mail import send_mail #send email
 from django.contrib import messages 
 from django.conf import settings #mail
 from django.http import HttpResponse
-from django.views.generic import CreateView # registration
-from django.contrib.auth import get_user_model #registration
 from .forms import UserForm, ClientCreateForm
 from .utils import render_to_pdf #PDF
 from .models import Client, Persona, Proyecto
 from django.http import HttpResponseRedirect
 
-#register
-
-User = get_user_model()
 
 
 
