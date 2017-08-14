@@ -5,7 +5,7 @@ from .validators import clean_email
 from django.contrib.auth import get_user_model #regsitration
 
 User = get_user_model()
-
+#new task
 
 
 

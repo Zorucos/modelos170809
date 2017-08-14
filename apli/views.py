@@ -81,6 +81,8 @@ def index_contact(request):
     all_clients = Client.objects.all()
     return render(request, 'apli/index_contact.html', {'all_clients': all_clients})
 
+
+
 @login_required(login_url='/register/login/')
 def index_model(request):
     all_models = Persona.objects.all()
@@ -101,6 +103,11 @@ def detail_contact(request, pk):
 def detail_model(request, persona_id):
     model = get_object_or_404(Persona, id=persona_id)
     return render(request, 'apli/detail_model.html', {'model': model})
+    
+@login_required(login_url='/register/login/')
+def detail_project(request, pk):
+    project = get_object_or_404(Proyecto, id=pk)
+    return render(request, 'apli/detail_project.html', {'project': project})
 
 @login_required(login_url='/register/login/')
 def busca(request):
@@ -130,10 +137,7 @@ def busca(request):
 
     return render(request, 'apli/busca.html', {"busca_clients": querysetClients, "busca_personas": querysetPersonas, "busca_proyectos": querysetProyectos})
 
-@login_required(login_url='/register/login/')
-def detail_project(request, pk):
-    project = get_object_or_404(Proyecto, id=pk)
-    return render(request, 'apli/detail_project.html', {'project': project})
+
 
 @login_required(login_url='/register/login/')
 def ingreso(request):

@@ -6,8 +6,6 @@ urlpatterns = [
 
     url(r'^$', views.ingreso, name='ingreso'),                                                      # /apli/
 
-
-
     url(r'^client/$', views.index_contact, name='index_contact'),                                   # /clients
     url(r'^client/(?P<pk>[0-9]+)/$', views.detail_contact, name='detail_contact'),                  # /client/<id>
     url(r'^client/new/$', views.ClientCreate.as_view(), name='client_new'),                         # /client/new/
@@ -15,6 +13,7 @@ urlpatterns = [
     url(r'^client/(?P<pk>[0-9]+)/delete/$', views.ClientDelete.as_view(), name='client_delete'),    # /client/<id>/delete/
 
     url(r'^busca/$', views.busca, name='busca'),                                                    # /busca/
+                                                       #task
 
     # /proyecto/new/ TEST proyecto
     url(r'^proyecto/new/$', views.ProyectoCreate.as_view(), name='proyecto_new'),
@@ -31,8 +30,11 @@ urlpatterns = [
     # /model/13
     url(r'^model/(?P<pk>[0-9]+)/$', views.detail_model, name='detail_model'),
 
+
     # /apli/projects
     url(r'^project/$', views.index_project, name='index_project'),
+
+    
 
     # /project/13
     url(r'^project/(?P<pk>[0-9]+)/$', views.detail_project, name='detail_project'),

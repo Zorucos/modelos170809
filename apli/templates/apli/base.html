@@ -51,6 +51,7 @@
                                     <li role="presentation" class="{% block ordenes_active %}{% endblock %}"><a href="{% url 'index_orden_compra' %}"><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span> Auftrag</a></li>
                                     <li role="presentation" class="{% block projects_active %}{% endblock %}"><a href="{% url 'index_project' %}"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Projekt</a></li>
                                     <li role="presentation" class="{% block calendario_active %}{% endblock %}"><a href="{% url 'calendar_by_user' %}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Kalendar</a></li>
+                                    <li role="presentation" class="{% block task_active %}{% endblock %}}"><a href="{% url 'index_task' %}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Neuer Task</a></li>
                                     <li role="presentation" >
                                         <form  method="GET" action="{% url 'busca' %}" class="navbar-form navbar-right" role="search" >
                                             <input type="text" placeholder="Suchen" class="form-control" name="q" value="{{ request.GET.q }}">

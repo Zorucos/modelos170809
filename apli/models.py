@@ -71,3 +71,5 @@ class Afectacion(models.Model):
 
     def __str__(self):
         return self.persona.nombre_completo + ' - ' + self.proyecto.nombre
+
+

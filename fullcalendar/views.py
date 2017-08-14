@@ -2,6 +2,33 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from fullcalendar.models import CalendarEvent
 from fullcalendar.util import events_to_json, calendar_options
+from fullcalendar.forms import NewTask
+from django.contrib.auth.decorators import login_required # requisito login  def
+from django.contrib.auth.mixins import LoginRequiredMixin # requisito login  viw
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+
+@login_required(login_url='/register/login/')
+def index_task(request):
+    all_tasks = CalendarEvent.objects.all()
+    return render(request, 'task/index_task.html', {'all_tasks': all_tasks})
+
+@login_required(login_url='/register/login/')
+def detail_task(request, pk):
+    task = get_object_or_404(CalendarEvent, id=pk)
+    return render(request, 'task/detail_task.html', {'task': task})
+
+    # crear una nuev task
+class new_task(LoginRequiredMixin, CreateView):
+    form_class = NewTask
+    login_url = '/login/'
+    template_name = 'task/form_task.html'
+    success_url = "/calendar/task"
+
+    def form_valid(self, form):
+            instance = form.save(commit=False)
+            instance.owner = self.request.user
+            return super(new_task, self).form_valid(form)
 
 
 OPTIONS = """{  header: {
