@@ -15,17 +15,29 @@ from .forms import UserForm, ClientCreateForm
 from .utils import render_to_pdf #PDF
 from .models import Client, Persona, Proyecto
 from django.http import HttpResponseRedirect
+from django.core.mail import EmailMultiAlternatives
 
 
-
-
+def prueba_email(request):
+    return render(request, 'apli/prueba.html')
 
 #skdjaksdgkasgkads
 
 def SubscrptionView(request):
-    print ("email sent")
-    send_mail('probando probando', 'Here is the message para felipe para mostrar que el cuento funciona. weeenaaaaa culiao', 'base.EMAIL_HOST_USER', ['ismaelsorucoi@gmail.com'], fail_silently=False,)
-    messages.success(request, 'Gracias por registrarte')
+    # print ("email sent")
+    # html_content = '<p>This is an <strong>important</strong> message.</p>'
+    # send_mail('probando probando', html_content, 'base.EMAIL_HOST_USER', ['ismaelsorucoi@gmail.com'], fail_silently=False,)
+    # messages.success(request, 'Gracias por registrarte')
+    # return render(request, 'apli/ingreso.html', {})
+    subject, from_email, to = 'hello', 'base.EMAIL_HOST_USER', 'ismaelsorucoi@gmail.com'
+    text_content = 'This is an important message.'
+    html_content = '<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title></title><style></style></head><body><table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"><tr><td align="center" valign="top"><table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer"><tr><td align="center" valign="top">This is where my content goes.</td></tr></table></td></tr></table></body></html><table border="0" cellpadding="0" cellspacing="0" width="600" id="templateColumns"><tr><td align="center" valign="top" width="50%" class="templateColumnContainer"><table border="0" cellpadding="10" cellspacing="0" width="100%"><tr><td class="leftColumnContent"><img src="http://placekitten.com/g/280/300" class="columnImage" /></td></tr><tr><td valign="top" class="leftColumnContent"><h1>Left Column</h1>Lorem ipsum dolor sit amet.</td></tr></table></td><td align="center" valign="top" width="50%" class="templateColumnContainer"><table border="0" cellpadding="10" cellspacing="0" width="100%"><tr><td class="centerColumnContent"><img src="http://placekitten.com/g/280/300" class="columnImage" /></td></tr><tr><td valign="top" class="rightColumnContent"><h1>Right Column</h1>Lorem ipsum dolor sit amet.</td></tr></table></td><td align="center" valign="top" width="50%" class="templateColumnContainer"><table border="0" cellpadding="10" cellspacing="0" width="100%"><tr><td class="rightColumnContent"><img src="http://placekitten.com/g/280/300" class="columnImage" /></td></tr><tr><td valign="top" class="leftColumnContent"><h1>Left Column</h1>Lorem ipsum dolor sit amet.</td></tr></table></td></tr></table>'
+    #'<!-- contenido en el centro --><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title></title><style></style></head><body><table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"><tr><td align="center" valign="top"><table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer"><tr><td align="center" valign="top">This is where my content goes.</td></tr></table></td></tr></table></body></html><!-- Tabla va aca  --><table border="0" cellpadding="0" cellspacing="0" width="600" id="templateColumns"><tr><td align="center" valign="top" width="50%" class="templateColumnContainer"><table border="0" cellpadding="10" cellspacing="0" width="100%"><tr><td class="leftColumnContent"><img src="http://placekitten.com/g/280/300" class="columnImage" /></td></tr><tr><td valign="top" class="leftColumnContent"><h1>Left Column</h1>Lorem ipsum dolor sit amet.</td></tr></table></td><td align="center" valign="top" width="50%" class="templateColumnContainer"><table border="0" cellpadding="10" cellspacing="0" width="100%"><tr><td class="rightColumnContent"><img src="http://placekitten.com/g/280/300" class="columnImage" /></td></tr><tr><td valign="top" class="rightColumnContent"><h1>Right Column</h1>Lorem ipsum dolor sit amet.</td></tr></table></td></tr></table>'
+    #'<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title></title><style></style></head><body><table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"><tr><td align="center" valign="top"><table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer"><tr><td align="center" valign="top">This is where my content goes.</td></tr></table></td></tr></table></body></html>' 
+    #'<html xmlns="http://www.w3.org/1999/xhtml"> <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title></title><style></style></head><body><table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"><tr><td align="center" valign="top"><table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer"><tr><td align="center" valign="top">This is where my content goes.</td></tr></table></td></tr></table></body></html>'
+    msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
     return render(request, 'apli/ingreso.html', {})
 
 #test pdf

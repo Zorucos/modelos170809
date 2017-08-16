@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^client/new/$', views.ClientCreate.as_view(), name='client_new'),                         # /client/new/
     url(r'^client/(?P<pk>[0-9]+)/update/$', views.ClientUpdate.as_view(), name='client_update'),    # /client/<id>/update/
     url(r'^client/(?P<pk>[0-9]+)/delete/$', views.ClientDelete.as_view(), name='client_delete'),    # /client/<id>/delete/
-
+    url(r'^prueba_email/$', views.prueba_email, name='prueba_email'),
     url(r'^busca/$', views.busca, name='busca'),                                                    # /busca/
                                                        #task
 
