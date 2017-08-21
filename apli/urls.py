@@ -12,6 +12,10 @@ urlpatterns = [
     url(r'^client/(?P<pk>[0-9]+)/update/$', views.ClientUpdate.as_view(), name='client_update'),    # /client/<id>/update/
     url(r'^client/(?P<pk>[0-9]+)/delete/$', views.ClientDelete.as_view(), name='client_delete'),    # /client/<id>/delete/
     url(r'^prueba_email/$', views.prueba_email, name='prueba_email'),
+    url(r'^update/$', views.update, name='update'),
+    url(r'^unsubscribe/$', views.unsubscribe, name='unsubscribe'),
+    url(r'^view_prueba_email/$', views.view_prueba_email, name='view_prueba_email'),
+
     url(r'^busca/$', views.busca, name='busca'),                                                    # /busca/
                                                        #task
 
