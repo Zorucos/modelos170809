@@ -30,6 +30,9 @@ class CalendarEvent(models.Model):
     def __unicode__(self):
         return self.title
 
+    # def get_absolute_url(self):
+    #     return reverse('detail_task', kwargs={'pk': self.pk})
+
     def __str__(self):
         # datita = datetime.datetime.strptime(self.start.string, "%Y-%m-%d").date()
         return self.title
