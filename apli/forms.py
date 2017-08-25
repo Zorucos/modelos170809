@@ -4,37 +4,36 @@ from .models import Client
 from .validators import clean_email
 from django.contrib.auth import get_user_model #regsitration
 
+
 User = get_user_model()
-#new task
+# new task
 
 
-
-#crear un nuevo cliente isma ABRE
+# crear un nuevo cliente isma ABRE
 class ClientCreateForm(forms.ModelForm):
     class Meta:
         model = Client
         fields = [
-            'nombre_completo',
+            'name',
+            'name_short',
             'company',
-            'nickname',
             'company_short',
-            'pais_address',
-            'ciudad_address',
-            'codigo_address',
-            'street_address',
-            'numero_address',
+            'country',
+            'city',
+            'zip_code',
+            'address',
             'email',
-            'telephone',
+            'phone',
             'comment',
         ]
 
-
     def clean_name(self):
-        nombre_completo = self.cleaned_data.get("nombre_completo")
-        if nombre_completo == "Hello":
+        name = self.cleaned_data.get("name")
+        if name == "Hello":
             raise forms.ValidationError("Not a valid name")
         return name
-#crear un nuevo cliente isma CIERRE
+# crear un nuevo cliente isma CIERRE
+
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -44,38 +43,19 @@ class UserForm(forms.ModelForm):
         fields = ['username', 'email', 'password']
 
 
-class ContactForm(forms.ModelForm):
+class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
         fields = [
-            'nombre_completo',
-            'nickname',
+            'name',
+            'name_short',
             'company',
             'company_short',
-            'pais_address',
-            'ciudad_address',
-            'codigo_address',
-            'street_address',
-            'numero_address',
+            'country',
+            'city',
+            'zip_code',
+            'address',
             'email',
-            'telephone',
-            'comment'
+            'phone',
+            'comment',
         ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

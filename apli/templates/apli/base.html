@@ -44,12 +44,23 @@
                             <div class="collapse navbar-collapse" id="topNavBar">
                                 <ul class="nav navbar-nav">
 
-                                    <li role="presentation" class="{% block contacts_active %}{% endblock %}"><a href="{% url 'index_contact' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Kunde</a></li>
+                                    <li role="presentation" class="{% block clients_active %}{% endblock %}"><a href="{% url 'index_client' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Kunde</a></li>
                                     <li role="presentation" class="{% block models_active %}{% endblock %}"><a href="{% url 'index_model' %}"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Modelle</a></li>
                                     <li role="presentation" class="{% block personas_active %}{% endblock %}"><a href="{% url 'index_personas' %}"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span> Ansprechparner</a></li>
-                                    <li role="presentation" class="{% block cotizaciones_active %}{% endblock %}"><a href="{% url 'index_cotizacion' %}"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> Angebot</a></li>
-                                    <li role="presentation" class="{% block ordenes_active %}{% endblock %}"><a href="{% url 'index_orden_compra' %}"><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span> Auftrag</a></li>
-                                    <li role="presentation" class="{% block projects_active %}{% endblock %}"><a href="{% url 'index_project' %}"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Projekt</a></li>
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                                            Projekt
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li role="presentation" class="{% block cotizaciones_active %}{% endblock %}"><a href="{% url 'index_angebot' %}"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> Angebot</a></li>
+                                            <li role="presentation" class="{% block ordenes_active %}{% endblock %}"><a href="{% url 'index_aufttrag' %}"><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span> Auftrag</a></li>
+                                            <li role="presentation" class="{% block projects_active %}{% endblock %}"><a href="{% url 'index_job' %}"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Job</a></li>
+                                        </ul>
+                                    </li>
+
                                     <li role="presentation" class="{% block calendario_active %}{% endblock %}"><a href="{% url 'calendar_by_user' %}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Kalendar</a></li>
                                     <li role="presentation" class="{% block task_active %}{% endblock %}}"><a href="{% url 'index_task' %}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Neuer Task</a></li>
                                     <li role="presentation" >

@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"fil",
+				"filter"
+			],
+			[
+				"file",
+				"FileField\tclass"
+			],
+			[
 				"P",
 				"Proyecto"
 			],
@@ -124,10 +132,38 @@
 	"buffers":
 	[
 		{
-			"file": "fullcalendar/models.py",
+			"file": "apli/templates/apli/detail_project.html",
 			"settings":
 			{
-				"buffer_size": 1294,
+				"buffer_size": 3856,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "apli/templates/apli/detail_client.html",
+			"settings":
+			{
+				"buffer_size": 4668,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "apli/urls.py",
+			"settings":
+			{
+				"buffer_size": 3058,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "apli/views.py",
+			"settings":
+			{
+				"buffer_size": 9106,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -135,7 +171,8 @@
 			"file": "apli/models.py",
 			"settings":
 			{
-				"buffer_size": 2651,
+				"buffer_size": 8177,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -204,22 +241,33 @@
 	[
 		"/E/modelos170809",
 		"/E/modelos170809/apli",
+		"/E/modelos170809/apli/migrations/__pycache__",
+		"/E/modelos170809/apli/static/apli",
+		"/E/modelos170809/apli/templates",
+		"/E/modelos170809/apli/templates/apli",
 		"/E/modelos170809/fullcalendar/migrations",
-		"/E/modelos170809/fullcalendar/migrations/__pycache__",
-		"/E/modelos170809/fullcalendar/static",
-		"/E/modelos170809/fullcalendar/templates",
-		"/E/modelos170809/fullcalendar/templates/fullcalendar",
-		"/E/modelos170809/WG"
+		"/E/modelos170809/fullcalendar/migrations/__pycache__"
 	],
 	"file_history":
 	[
-		"/E/modelos170809/fullcalendar/views.py",
+		"/E/modelos170809/apli/templates/apli/index_project.html",
+		"/E/modelos170809/apli/templates/apli/client_form.html",
+		"/E/modelos170809/apli/forms.py",
+		"/E/modelos170809/apli/templates/apli/detail_client.html",
+		"/E/modelos170809/apli/templates/apli/index_client.html",
+		"/E/modelos170809/apli/urls.py",
+		"/E/modelos170809/apli/views.py",
+		"/E/modelos170809/apli/templates/apli/base.html",
+		"/E/modelos170809/apli/templates/apli/xxxform.html",
+		"/E/modelos170809/apli/utils.py",
+		"/E/modelos170809/apli/validators.py",
 		"/E/modelos170809/apli/models.py",
+		"/E/modelos170809/apli/templates/apli/detail_contact.html",
 		"/E/modelos170809/fullcalendar/models.py",
+		"/E/modelos170809/apli/admin.py",
+		"/E/modelos170809/fullcalendar/views.py",
 		"/E/modelos170809/fullcalendar/templates/fullcalendar/index.html",
 		"/E/modelos170809/fullcalendar/urls.py",
-		"/E/modelos170809/apli/urls.py",
-		"/E/modelos170809/apli/templates/apli/base.html",
 		"/E/modelos170809/apli/templates/apli/busca.html",
 		"/E/modelos170809/fullcalendar/templates/fullcalendar/base2.html",
 		"/E/MODELOCOS/WG legal/fullcalendar/templates/fullcalendar/base2.html",
@@ -329,18 +377,7 @@
 		"/E/DG - Copie/contact/__init__.py",
 		"/E/DG - Copie/contact/templates/apli/index.html",
 		"/E/DG - Copie/contact/tests.py",
-		"/E/DG - Copie/contact/models.py",
-		"/E/DG - Copie/contact/apps.py",
-		"/E/DG - Copie/contact/views.py",
-		"/E/DG - Copie/DG/__init__.py",
-		"/C/Users/DQ-PC/AppData/Roaming/Sublime Text 3/Packages/User/Python Django.sublime-settings",
-		"/C/Users/DQ-PC/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
-		"/E/DG/DG/settings.py",
-		"/E/DG/contact/templates/contact/index",
-		"/E/DG/manage.py",
-		"/C/Users/DQ-PC/AppData/Roaming/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
-		"/E/DG/DG2.sublime-workspace",
-		"/C/Users/DQ-PC/AppData/Roaming/Sublime Text 3/Packages/Anaconda/README.md"
+		"/E/DG - Copie/contact/models.py"
 	],
 	"find":
 	{
@@ -355,9 +392,26 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"statut",
+			"total_price",
+			"contact",
+			"index_contact",
+			"detail_co",
+			"index_contact",
+			"index_con",
+			"IntegerField",
+			"nombre",
+			"IntegerField(blank",
+			"Project",
+			"HttpResponse",
+			"proyec",
+			"Proyecto",
+			"user",
+			"integer",
+			"user",
 			"render_to_pdf",
 			"getEventSourceById",
 			"id",
@@ -400,6 +454,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"IntegerField(null",
+			"Project",
 			"demo",
 			"index_contact",
 			"apli:index"
@@ -419,54 +475,84 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "fullcalendar/models.py",
+					"file": "apli/templates/apli/detail_project.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1294,
+						"buffer_size": 3856,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2643,
+								2643
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1464.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "apli/models.py",
+					"file": "apli/templates/apli/detail_client.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2651,
+						"buffer_size": 4668,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								103,
-								103
+								3756,
+								3867
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1800.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "apli/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3058,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1096,
+								1096
 							]
 						],
 						"settings":
@@ -476,10 +562,92 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 216.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "apli/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5078,
+								5088
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3136.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "apli/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4924,
+								4931
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1789.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -487,7 +655,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 33.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -524,7 +692,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 62.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":

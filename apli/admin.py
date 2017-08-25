@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Client, Persona, Proyecto, Afectacion
+from .models import Client, Project, Attachment, Person, Assignment, Horaire, Cost
 
 #isma
 #<!--from .models import Post
@@ -16,6 +16,9 @@ from .models import Client, Persona, Proyecto, Afectacion
 #isma
 
 admin.site.register(Client)
-admin.site.register(Proyecto)
-admin.site.register(Persona)
-admin.site.register(Afectacion)
+admin.site.register(Project)
+admin.site.register(Attachment)
+admin.site.register(Person)
+admin.site.register(Assignment)
+admin.site.register(Horaire)
+admin.site.register(Cost)

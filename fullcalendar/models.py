@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from apli.models import Proyecto
+from apli.models import Project
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 # import datetime
@@ -14,7 +14,7 @@ class CalendarEvent(models.Model):
     url = models.CharField(_('Url'), blank=True, max_length=200)
     color = models.CharField(_('Color'), blank=True, max_length=200)
     responsable = models.ForeignKey(User, on_delete=models.CASCADE)
-    project = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     comment = models.CharField(blank=True, max_length=500)
     STATUS_CHOICES = (
         ('Not Started', 'Not Started'),

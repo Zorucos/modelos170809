@@ -1,185 +1,93 @@
 {% extends 'apli/base.html' %}
-
 {% block body %}
+    <div class="container">
+        <h1><small>Projekt:</small> {{project.name}}</h1>
+    </div>
 
-        <div class="container">
-            <h1><small>Projekt:</small> {{project.nombre}}</h1>
+    <!-- BOTONES PARA EDITAR ELIMINAR VENTANAS DESPEGABLES -->
+    <div class="container  modal-header">
+        <div class="row">
+            <!-- EDITAR -->
+            <a href="#" <button type="submit" class="btn btn-success btn-xs glyphicon glyphicon-pencil col-md-offset-10" data-toggle="modal"></a>
+            <!-- ELIMINAR -->
+            <a href="#" <button type="submit" class="btn btn-danger btn-xs glyphicon glyphicon-trash col-md" data-toggle="modal"></a>
+            <!-- Imprimir -->
+            <a href="#" <button type="submit" class="btn btn-info btn-xs glyphicon glyphicon-print col-md" data-toggle="modal"></a>
+            <!-- CREAR PDF -->
+            <a href="{% url 'pdf_rechnung' project.id %}" <button type="submit" class="btn btn-warning btn-xs glyphicon glyphicon-file col-md" data-toggle="modal"></a>
         </div>
+    </div>
 
-        <!-- BOTONES PARA EDITAR ELIMINAR VENTANAS DESPEGABLES -->
-        <!-- EDITAR -->
-
-            <div class="container  modal-header">
-                <div class="row">
-
-                                            <a href="{}" <button type="submit" class="btn btn-success btn-xs glyphicon glyphicon-pencil col-md-offset-10" data-toggle="modal"></a>
-        <!-- ELIMIMINAR -->
-
-                                            <a href="{}" <button type="submit" class="btn btn-danger btn-xs glyphicon glyphicon-trash col-md" data-toggle="modal"></a>
-        <!-- Imprimir -->
-
-                                            <a href="{}" <button type="submit" class="btn btn-info btn-xs glyphicon glyphicon-print col-md" data-toggle="modal"></a>
-        <!-- CREAR PDF -->
-
-                                            <a href="{% url 'pdf_rechnung' project.id %}" <button type="submit" class="btn btn-warning btn-xs glyphicon glyphicon-file col-md" data-toggle="modal"></a>
-                </div>
+    <!-- INFORMACION DE CLIENTE  -->
+    <div class= "container">
+        <br>
+        <div class="row">
+            <div class="container col-md-4">
+                <h4><b>Kunde:</b> {{project.client}}</h4>
+            </div>
+            <div class="container  col-md-4">
+                <h4><b>Date start:</b> {{project.start}}</h4>
+            </div>
+            <div class="container  col-md-4">
+                <h4><b>Date finish:</b> {{project.finish}}</h4>
+            </div>
+            <div class="container  col-md-4">
+                <h4><b>Preis (€):</b> {{project.total_price}}</h4>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="container  col-md-4">
+                <h4><b>Typ projekt:</b>xxx</h4>
             </div>
 
+            <div class="container  col-md-4">
+                <h4><b>Verantwortliche:</b>xxx</h4>
+            </div>
 
-        <!-- INFORMACION DE CLIENTE  -->
-
-        <div class= "container">
-            <br>
-                <div class="row">
-                        <div class="container col-md-4">
-                            <h4><b>Kunde:</b> {{project.client}}</h4>
-                        </div>
-
-                        <div class="container  col-md-4">
-                            <h4><b>Date:</b> {{project.fecha_creacion}}</h4>
-                        </div>
-
-                        <div class="container  col-md-4">
-                            <h4><b>Preis (€):</b> <!--{{project.fecha_creacion}}-->985458</h4>
-                        </div>
-                </div>
-            <br>
-                <div class="row">
-                    <div class="container  col-md-4">
-                        <h4><b>Typ projekt:</b> 696969</h4>
-                    </div>
-
-                    <div class="container  col-md-4">
-                        <h4><b>Verantwortliche:</b> {{project.comment}}</h4>
-                    </div>
-
-                    <div class="container  col-md-4">
-                        <h4><b>Archivzettel:</b> {{project.comment}}</h4>
-                    </div>
-                </div>
-            <br>
-                <div class="row">
-                    <div class="container  col-md-4">
-                        <h4><b>Notiz: </b> {{project.comment}}</h4>
-                    </div>
-
-                 <div class="row modal-header">
-
-                </div>
+            <div class="container  col-md-4">
+                <h4><b>Archivzettel:</b>xxx
         </div>
+        <br>
+        <div class="row">
+            <div class="container  col-md-4">
+                <h4><b>Notiz: </b>xxx</h4>
+            </div>
+         <div class="row modal-header"></div>
+    </div>
+    <br>
 
-         <br>
-
-        <!-- TABLA de Modelos relacionados a projecto   -->
-                <div class="container">
-                        <br>
-                            <div class="panel panel-warning">
-                                <div class="panel-heading"><h3>Modelle das haben mit die Projekt gearbeitet</h3></div>
-                                    <div class="panel-body">
-          <!-- % if all_clients % -->
-                                        <div class="table-responsive">
-                                            <table class="table table-hover ">
-                                                <tr class="active table-bordered">
-                                                    <th > Name</th>
-                                                    <th> Telefonnummer</th>
-                                                    <th> Email</th>
-                                                    <th> Status</th>
-                                                    <th> Card</th>
-
-                                                </tr>
-         <!-- % for client in all_clients % -->
-                                                <tr>
-                                                    <td>Ismael Soruco</td>
-                                                    <td><a href="tel:{{ client.telephone }}">{{client.telephone}}</a></td>
-                                                    <td><a href="mailto:{{ client.email }}">{{client.email}}</a></td>
-                                                    <td>Aktive</td>
-                                                    <td>OK</td>
-                                                </tr>
-           <!--% endfor % -->
-                                            </table>
-                                        </div>
-
-         <!-- % else % -->
-        <!--  <p> Keine Projekte </p> -->
-        <!--  % endif % -->
-
-                                    </div>
-                            </div>
-                    </div>
-
-<!-- PANEL con TABLA de TAREAS relacionados con PROYECTO -->
-        <div class="container">
-            <br>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3>Aufgaben von Projekt </h3>
-                </div>
-                <div class="panel-body">
-                   <!-- % if all_projects %-->
-                        <div class="table-responsive">
-                            <table class="table table-hover  ">
-                                <tr class="active table-bordered">
-                                    <th>Task</th>
-                                    <th>When</th>
-                                    <th>Who</th>
-                                    <th>Status</th>
-                                    <th>Notiz</th>
+    <!-- TABLA de Modelos relacionados a projecto   -->
+    <div class="container">
+        <br>
+        <div class="panel panel-warning">
+            <div class="panel-heading"><h3>Modelle das haben mit die Projekt gearbeitet</h3></div>
+            <div class="panel-body">
+                {% if all_models %}
+                    <div class="table-responsive">
+                        <table class="table table-hover ">
+                            <tr class="active table-bordered">
+                                <th > Name</th>
+                                <th> Telefonnummer</th>
+                                <th> Email</th>
+                                <th> Status</th>
+                                <th> Card</th>
+                            </tr>
+                            {% for model in all_models %}
+                                <tr>
+                                    <td><a href="#"><p class="form-control-static">{{model.person.name}}<p></a></td>
+                                    <td><a href="tel:{{ model.person.phone }}">{{model.person.phone}}</a></td>
+                                    <td><a href="mailto:{{ model.person.email }}">{{model.person.email}}</a></td>
+                                    <td>{{model.statut}}</td>
+                                    <td>{{model.person.sedcard}}</td>
                                 </tr>
-                                <!--% for project in all_projects %-->
-                                    <tr>
-                                        <td><a href="{% url 'detail_project' project.id %}">{{project.nombre}}</a></td>
-                                        <td>20.07.2017</a></td>
-                                        <td>{{project.fecha_creacion}}</td>
-                                        <td>OK</td>
-                                        <td>{{project.comment}}</td>
-                                    </tr>
-                                <!--% endfor %-->
-                            </table>
-                        </div>
-                   <!-- % else %-->
-                         <!-- <p> Keine Projekte </p>-->
-                   <!-- % endif %-->
-                </div>
+                            {% endfor %}
+                        </table>
+                    </div>
+                {% else %}
+                    <p> Keine Projekte </p>
+                {% endif %}
             </div>
         </div>
-
-
-
-<!-- TABLA de COSTOS relacionados a projecto   -->
-        <div class="container">
-                        <br>
-                            <div class="panel panel-success">
-                                <div class="panel-heading"><h3>Modelle das haben mit die Projekt gearbeitet</h3></div>
-                                    <div class="panel-body">
-          <!-- % if all_clients % -->
-                                        <div class="table-responsive">
-                                            <table class="table table-hover ">
-                                                <tr class="active table-bordered">
-                                                    <th > What</th>
-                                                    <th> cost</th>
-                                                    <th> who pay</th>
-                                                    <th> When</th>
-                                                    <th> Coments</th>
-
-                                                </tr>
-         <!-- % for client in all_clients % -->
-                                                <tr>
-                                                    <td>Ismael Soruco</td>
-                                                    <td><a href="tel:{{ client.telephone }}">{{client.telephone}}</a></td>
-                                                    <td><a href="mailto:{{ client.email }}">{{client.email}}</a></td>
-                                                    <td>Aktive</td>
-                                                    <td>OK</td>
-                                                </tr>
-           <!--% endfor % -->
-                                            </table>
-                                        </div>
-
-         <!-- % else % -->
-        <!--  <p> Keine Projekte </p> -->
-        <!--  % endif % -->
-
-                                    </div>
-                            </div>
-                    </div>
-
+    </div>
 {% endblock %}

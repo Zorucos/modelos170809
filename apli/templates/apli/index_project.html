@@ -1,16 +1,14 @@
 {% extends 'apli/base.html' %}
-
 {% block body %}
 
     <!--TITULO y BOTON VENTANA   -->
-
-        <div class="container">
-                <div class=" form-group input-group form-inline col-md-12">
-                    <h1>Projekte</h1>
-
-                   <a href="{% url 'proyecto_new' %}" <button type="submit" class=" btn btn-success btn-md pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </a>
-                </div>
+    <div class="container">
+        <div class=" form-group input-group form-inline col-md-12">
+            <h1>Projekte</h1>
+            <a href="{% url 'proyecto_new' %}" <button type="submit" class=" btn btn-success btn-md pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </a>
         </div>
+    </div>
+    
     <div class="container">
         {% if all_projects %}
             <div class="table-responsive">
@@ -32,8 +30,8 @@
                                     </div>
                                 </div>
                             </td>
-                            <td><a href="{% url 'detail_project' project.id %}"><p class="form-control-static">{{project.nombre}}</p></a></td>
-                            <td><p class="form-control-static">{{project.client}}</p></td>
+                            <td><a href="{% url 'detail_project' project.id %}"><p class="form-control-static">{{project.name}}</p></a></td>
+                            <td><a href="{% url 'detail_client' project.client.id %}"><p class="form-control-static">{{project.client}}</p></a></td>
                             <td><p class="form-control-static">{{project.fecha_creacion}}</p></td>
                             <td><p class="form-control-static">{{project.comment}}</p></td>
                         </tr>

@@ -1,6 +1,6 @@
 {% extends 'apli/base.html' %}
 {% block title %}Add a Client{% endblock %}
-{% block contacts_active %}active{% endblock %}
+{% block clients_active %}active{% endblock %}
 
 {% block body %}
 	<div class="container">
@@ -17,7 +17,7 @@
 							<div class="form-group ">
 								<div class="col-sm-offset-2 col-md-3">
 									<button type="submit" class="btn btn-dm col-md-5 btn-success">Submit</button>
-								    <a href="{% url 'index_contact' %}" <button type="button" class="btn btn-warning btn-md pull-right" data-dismiss="modal" >Stornieren</a>
+								    <a href="{% url 'index_client' %}" <button type="button" class="btn btn-warning btn-md pull-right" data-dismiss="modal" >Stornieren</a>
 								</div>
 
 							</div>

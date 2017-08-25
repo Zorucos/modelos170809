@@ -12,7 +12,7 @@
 <form class='container' method='POST'> {% csrf_token %}
 	{{ form.as_p }}
 	<button type='submit' class="btn btn-success btn-md" >Save</button> 
-	<a href="{% url 'index_contact' %}" <button type="button" class="btn btn-warning btn-md" data-dismiss="modal" >Stornieren</a>
+	<a href="{% url 'index_client' %}" <button type="button" class="btn btn-warning btn-md" data-dismiss="modal" >Stornieren</a>
 <!-- btn btn-warning btn-md pull-right -->
 </form>
 {% endblock %}
