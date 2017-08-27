@@ -5,9 +5,9 @@ from . import views
 urlpatterns = [
 
     # /apli/
-    url(r'^$', views.ingreso, name='ingreso'),
+    url(r'^$', views.dashboard, name='dashboard'),
 
-    # /clients
+    # /CLIENTS
     url(r'^client/$', views.index_client, name='index_client'),
     # /client/<id>
     url(r'^client/(?P<pk>[0-9]+)/$', views.detail_client, name='detail_client'),
@@ -18,7 +18,36 @@ urlpatterns = [
     # /client/<id>/delete/
     url(r'^client/(?P<pk>[0-9]+)/delete/$', views.ClientDelete.as_view(), name='client_delete'),
 
-    # /project
+
+    # /MODELS 
+    url(r'^model/$', views.index_model, name='index_model'),
+    # /model/13
+    url(r'^model/(?P<pk>[0-9]+)/$', views.detail_model, name='detail_model'),
+    # /client/new/
+    url(r'^model/new/$', views.PersonCreate.as_view(), name='model_new'),
+    # /proyecto/1/update/
+    url(r'^model/(?P<pk>[0-9]+)/update/$', views.PersonUpdate.as_view(), name='model_update'),
+    # /proyecto/1/delete/
+    url(r'^model/(?P<pk>[0-9]+)/delete/$', views.PersonDelete.as_view(), name='model_delete'),
+
+
+    # /PERSON
+    url(r'^index_personas/$', views.index_person, name='index_person'),
+    # /model/13
+    url(r'^person/(?P<pk>[0-9]+)/$', views.detail_person, name='detail_person'),
+    # # /client/new/
+    url(r'^person/new/$', views.PersonCreate.as_view(), name='person_new'),
+    # # /proyecto/1/update/
+    url(r'^person/(?P<pk>[0-9]+)/update/$', views.PersonUpdate.as_view(), name='person_update'),
+    # # /proyecto/1/delete/
+    url(r'^person/(?P<pk>[0-9]+)/delete/$', views.PersonDelete.as_view(), name='person_delete'),
+
+
+
+
+
+
+    # /project llamado de 
     url(r'^project/$', views.index_project, name='index_project'),
     # /angebot
     url(r'^angebot/$', views.index_angebot, name='index_angebot'),
@@ -36,6 +65,10 @@ urlpatterns = [
     # /project/<id>/delete/
     url(r'^project/(?P<pk>[0-9]+)/delete/$', views.ProjectDelete.as_view(), name='project_delete'),
 
+
+
+
+
     url(r'^prueba_email/$', views.prueba_email, name='prueba_email'),
     url(r'^update/$', views.update, name='update'),
     url(r'^unsubscribe/$', views.unsubscribe, name='unsubscribe'),
@@ -46,17 +79,8 @@ urlpatterns = [
     # /proyecto/new/ TEST proyecto
     url(r'^proyecto/new/$', views.ProjectCreate.as_view(), name='proyecto_new'),
 
-    # /proyecto/1/update/
-    url(r'^modelo/(?P<pk>[0-9]+)/update/$', views.ProjectUpdate.as_view(), name='proyecto_update'),
+   
 
-    # /proyecto/1/delete/
-    url(r'^modelo/(?P<pk>[0-9]+)/delete/$', views.ProjectDelete.as_view(), name='proyecto_delete'),
-
-    # /apli/models
-    url(r'^model/$', views.index_model, name='index_model'),
-
-    # /model/13
-    url(r'^model/(?P<pk>[0-9]+)/$', views.detail_model, name='detail_model'),
 
     # /apli/projects
 #    url(r'^project/$', views.index_project, name='index_project'),
@@ -64,11 +88,10 @@ urlpatterns = [
     # /project/13
 #    url(r'^project/(?P<pk>[0-9]+)/$', views.detail_project, name='detail_project'),
 
-    # /apli/ isma
-    url(r'^index_calendario/$', views.index_calendario, name='index_calendario'),
+
 
     # /apli/isma
-    url(r'^index_cotizacion/$', views.index_cotizacion, name='index_cotizacion'),
+    url(r'^index_angebot/$', views.index_angebot, name='index_angebot'),
 
     # /apli/isma
     url(r'^index_home_page/$', views.index_home_page, name='index_home_page'),
@@ -76,6 +99,5 @@ urlpatterns = [
     # /apli/isma
     url(r'^index_orden_compra/$', views.index_orden_compra, name='index_orden_compra'),
 
-    # /apli/isma
-    url(r'^index_personas/$', views.index_personas, name='index_personas'),
+    
 ]

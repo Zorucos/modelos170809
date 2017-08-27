@@ -1,0 +1,52 @@
+{% extends 'apli/base.html' %}
+{% block title %}WG - Models{% endblock %}
+{% block models_active %}active{% endblock %}
+
+{% block body %}
+
+        <div class="container">
+                <div class=" form-group input-group form-inline col-md-12">
+
+                    <h1>Modelle</h1>
+
+                    <a href="{% url 'model_new' %}" <button type="submit" class="btn btn-success btn-md pull-right" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                </div>
+        </div>
+
+
+    <div class="container">
+        {% if all_models %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-condensed table-bordered">
+                    <tr class="active info"> <!-- Ventana emergente de boton de  para crear neuvo usuario.  -->
+                        <th></th>
+                        <th><h3 class="form-control-static">Name</h3></th>
+                        <th><h3 class="form-control-static">bank</h3></th>
+                        <th><h3 class="form-control-static">Mail</h3></th>
+                        <th><h3 class="form-control-static">Telefonnummer</h3></th>
+                        <th><h3 class="form-control-static">Sedcard</h3></th>
+                    </tr>
+
+                    {% for modelo in all_models %}
+                        <tr>
+                            <td>
+                                <div class=" btn-group-xs">
+                                    <div class="">
+                                        <a href={% url 'detail_model' modelo.id %} class="btn btn-link btn-link glyphicon glyphicon-search"></a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><a href="{% url 'detail_model' modelo.id %}"><p class="form-control-static">{{modelo.name}}</p></a></td>
+                            <td>{{modelo.bank_account}}</td>
+                            <td><a href="mailto:{{ modelo.email }}"><p class="form-control-static">{{modelo.email}}</p></a></td>
+                            <td><a href="tel:{{ modelo.telephone }}"><p class="form-control-static">{{modelo.phone}}</p></a></td>
+                            <td><p class="form-control-static">{{modelo.sedcard}}</p></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% else %}
+            <h3>No hay modelos</h3>
+        {% endif %}
+    </div>
+{% endblock%}

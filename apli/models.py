@@ -36,8 +36,8 @@ class Project(models.Model):
     finish = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.CharField(max_length=500, blank=True)
-    sort = models.CharField(max_length=8, choices=(('angebot', 'angebot'), ('aufttrag', 'aufttrag'), ('job', 'job'),), default='angebot')
-    statut = models.CharField(max_length=8, choices=(('project', 'project'), ('confirmed', 'confirmed'), ('realized', 'realized'), ('acquitted', 'acquitted'), ('canceled', 'canceled'),), default='angebot')
+    sort = models.CharField(max_length=8, choices=(('Angebot', 'angebot'), ('Auftrag', 'aufttrag'), ('Job', 'job'),), default='Angebot')
+    statut = models.CharField(max_length=9, choices=(('Project', 'project'), ('Bestätigung', 'confirmed'), ('Fertig', 'realized'), ('bezhal', 'acquitted'), ('Absagen', 'canceled'),), default='Project')
     all_day = models.IntegerField(null=True, blank=True)
     half_day = models.IntegerField(null=True, blank=True)
     half_day_price_pro = models.IntegerField(null=True, blank=True)
@@ -93,7 +93,7 @@ class Person(models.Model):
     phone = models.CharField(validators=[phone_regex], max_length=15)
     comment = models.CharField(max_length=500, blank=True)
     sedcard = models.BooleanField(default=False)
-    statut = models.CharField(max_length=3, choices=(('mod', 'Modelo'), ('fot', 'Fotografo'), ('mak', 'Make Up'), ('sty', 'Styling'), ('rhh', 'Recursos Humanos'), ('otr', 'Otro')), default='mod')
+    statut = models.CharField(max_length=15, choices=(('modell', 'Modelo'), ('Photograph', 'Fotografo'), ('Make Up', 'Make Up'), ('Styling', 'Styling'), ('Rrhh', 'Recursos Humanos'), ('verschieden', 'Otro')), default='Modell')
     bank_regex = RegexValidator(regex=r'^DE\d{2}\s?([0-9a-zA-Z]{4}\s?){4}[0-9a-zA-Z]{2}$', message="Bank account must be entered in the format: 'DE12 3456 7890 1234 5678 90'. Up to 27 digits allowed.")
     bank_account = models.CharField(validators=[bank_regex], max_length=27)
     website = models.CharField(max_length=200, blank=True)
@@ -103,7 +103,7 @@ class Person(models.Model):
         verbose_name_plural = 'Persons'
 
     def get_absolute_url(self):
-        return reverse('detail_personas', kwargs={'pk': self.pk})
+        return reverse('detail_model', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
