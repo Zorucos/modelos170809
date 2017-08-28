@@ -37,11 +37,13 @@ def view_prueba_email(request):
     return render(request, 'apli/mail/vista_mail.html')
 
 # what is doing this function is send an email with a a template html msg. then go to dashboard. 
-def SubscrptionView(request):
-    subject, from_email, to = 'hello', 'base.EMAIL_HOST_USER', 'ismaelsorucoi@gmail.com'
+def SubscrptionView(request, pk):
+    project = get_object_or_404(Project, id=pk)
+    context = {"project": project, }
+    subject, from_email, to = 'hello', 'base.EMAIL_HOST_USER', 'felipe.soruco@gmail.com'
     text_content = 'This is an important message.'
     htmly = get_template('apli/mail/prueba.html')
-    html_content = htmly.render()
+    html_content = htmly.render(context)
     msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
     msg.attach_alternative(html_content, "text/html")
     msg.send()

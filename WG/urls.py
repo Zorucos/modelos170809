@@ -18,5 +18,5 @@ urlpatterns = [
     url(r'^apli/new-client/$', ClienteCreateView.as_view(), name ="new-client"),
 	#generation PDF
 	url(r'^pdf/(?P<pk>[0-9]+)/$', GeneratePDF.as_view(), name='pdf_rechnung'),
-    url(r'^email/$', SubscrptionView, name="upload_pic"), # mail envio
+    url(r'^email/(?P<pk>[0-9]+)/$', SubscrptionView, name="email_send"), # mail envio
 ]

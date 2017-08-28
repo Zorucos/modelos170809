@@ -119,8 +119,13 @@ class Attachment(models.Model):
     comment_WG = models.CharField(max_length=500, blank=True)
     comment_client = models.CharField(max_length=500, blank=True)
 
+    class Meta:
+        verbose_name = 'Attachment'
+        verbose_name_plural = 'Attachments'
+
     def __str__(self):
         return self.sort
+
 
 
 class Assignment(models.Model):
