@@ -14,10 +14,13 @@ from django.conf import settings # mail
 from django.http import HttpResponse
 from .forms import UserForm, ClientCreateForm, PersonCreateForm
 from .utils import render_to_pdf # PDF
-from .models import Client, Person, Project
+from .models import Client, Person, Project, Attachment, Assignment
 from django.http import HttpResponseRedirect
 from django.core.mail import EmailMultiAlternatives
-
+from datetime import date
+from django.core.files.base import ContentFile
+from io import BytesIO
+from xhtml2pdf import pisa
 
 
 # { email testing OPEN 
@@ -40,7 +43,7 @@ def view_prueba_email(request):
 def SubscrptionView(request, pk):
     project = get_object_or_404(Project, id=pk)
     context = {"project": project, }
-    subject, from_email, to = 'hello', 'base.EMAIL_HOST_USER', 'felipe.soruco@gmail.com'
+    subject, from_email, to = 'new angebot', 'base.EMAIL_HOST_USER', project.client.email
     text_content = 'This is an important message.'
     htmly = get_template('apli/mail/prueba.html')
     html_content = htmly.render(context)
@@ -161,8 +164,10 @@ def detail_person(request, pk):
 def detail_project(request, pk):
     project = get_object_or_404(Project, id=pk)
     all_models = project.assignment_set.all()
+    all_attachments = project.attachment_set.all()
+    all_costs = project.cost_set.all()
 #    all_partners = project.assignment_set.all().exclude(person.statut='mod')
-    return render(request, 'apli/angebot/detail_angebot.html', {'project': project, 'all_models': all_models})
+    return render(request, 'apli/angebot/detail_angebot.html', {'project': project, 'all_models': all_models, 'all_attachments': all_attachments, 'all_costs': all_costs})
 
 
 @login_required(login_url='/register/login/')
@@ -273,3 +278,40 @@ class ProjectUpdate(LoginRequiredMixin, UpdateView):
 class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
     success_url = reverse_lazy('index_project')
+
+
+def project_send(request, pk):
+    project = get_object_or_404(Project, id=pk)
+    all_models = project.assignment_set.all()
+    all_attachments = project.attachment_set.all()
+    all_costs = project.cost_set.all()
+
+    # debo crear el attachment
+    template = get_template('apli/pdf/invoice.html')
+    context = {"project": project, }
+    html = template.render(context)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+
+    at = Attachment(project=project, sort=project.sort, send_date = date.today())
+
+    at.file.save('nombre.pdf', ContentFile(result.getvalue()))
+    at.save()
+
+    context2 = {"project": project, }
+    subject, from_email, to = 'new angebot', 'base.EMAIL_HOST_USER', project.client.email
+    text_content = 'This is an important message.'
+    htmly = get_template('apli/mail/prueba.html')
+    html_content = htmly.render(context2)
+    msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
+    msg.attach_alternative(html_content, "text/html")
+    msg.attach(at.file.name, result.getvalue(), )
+    msg.send()
+    return render(request, 'apli/angebot/detail_angebot.html', {'project': project, 'all_models': all_models, 'all_attachments': all_attachments, 'all_costs': all_costs})
+
+
+@login_required(login_url='/register/login/')
+def detail_assignment(request, pk):
+    assignment = get_object_or_404(Assignment, id=pk)
+    all_horaire = assignment.horaire_set.all()
+    return render(request, 'apli/assignment/detail_assignment.html', {'assignment': assignment, 'all_horaire': all_horaire})

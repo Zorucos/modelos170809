@@ -43,10 +43,6 @@ urlpatterns = [
     url(r'^person/(?P<pk>[0-9]+)/delete/$', views.PersonDelete.as_view(), name='person_delete'),
 
 
-
-
-
-
     # /project llamado de 
     url(r'^project/$', views.index_project, name='index_project'),
     # /angebot
@@ -64,9 +60,12 @@ urlpatterns = [
     url(r'^project/(?P<pk>[0-9]+)/update/$', views.ProjectUpdate.as_view(), name='project_update'),
     # /project/<id>/delete/
     url(r'^project/(?P<pk>[0-9]+)/delete/$', views.ProjectDelete.as_view(), name='project_delete'),
+    # /project/<id>/send/
+    url(r'^project/(?P<pk>[0-9]+)/send/$', views.project_send, name='project_send'),
 
 
-
+    # /assignment/<id>
+    url(r'^assignment/(?P<pk>[0-9]+)/$', views.detail_assignment, name='detail_assignment'),
 
 
     url(r'^prueba_email/$', views.prueba_email, name='prueba_email'),

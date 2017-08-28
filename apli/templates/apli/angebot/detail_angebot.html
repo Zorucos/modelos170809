@@ -13,8 +13,10 @@
             <a href="{% url 'project_delete' project.id %}" <button type="submit" class="btn btn-danger btn-xs glyphicon glyphicon-trash col-md" data-toggle="modal"></a>
             <!-- Imprimir -->
             <a href="{% url 'email_send'  project.id %}" <button type="submit" class="btn btn-info btn-xs glyphicon glyphicon-envelope col-md" data-toggle="modal"></a>
-            <!-- CREAR PDF -->
-            <a href="{% url 'pdf_rechnung' project.id %}" <button type="submit" class="btn btn-warning btn-xs glyphicon glyphicon-file col-md" data-toggle="modal"></a>
+            <!-- VISUALIZAR PDF -->
+            <a href="{% url 'pdf_rechnung' project.id %}" <button type="submit" class="btn btn-warning btn-xs glyphicon glyphicon-eye-open col-md" data-toggle="modal"></a>
+            <!-- CREAR PDF Y ENVIARLO-->
+            <a href="{% url 'project_send' project.id %}" <button type="submit" class="btn btn-success btn-xs glyphicon glyphicon-plane col-md" data-toggle="modal"></a>
         </div>
     </div>
 
@@ -170,7 +172,7 @@
                     <h4><b>quantity models plus </b>{{project.requisiten_price_for_each_model}}</h4>
                 </div>
                 <div class="container  col-md-4">
-                    <h4><b>Other titel </b>{{project.other_title  }}</h4>
+                    <h4><b>Other</b>{{project.other_title  }}</h4>
                 </div>
                 <div class="container  col-md-8">
                     <h4><b>Other description </b>{{project.other_description}}</h4>
@@ -189,7 +191,7 @@
                 </div>
 
                 <div class="container  col-md-8">
-                    <h4><b> photo stunde</b>{{project.photo_hours }}</h4>
+                    <h4><b> photo stunde </b>{{project.photo_hours }}</h4>
                 </div>
 <br>
 <br>
@@ -203,63 +205,25 @@
                 
             </div>
 
-    <!-- TABLA de Modelos relacionados a projecto   -->
-    <div class="container">
-        <br>
-        <div class="panel panel-warning">
-            <div class="panel-heading"><h3>Attachments form {{project.name}} </h3></div>
-            <div class="panel-body">
-                {% if all_attachments %}
-                    <div class="table-responsive">
-                        <table class="table table-hover ">
-                            <tr class="active table-bordered">
-                                <th > sort</th>
-                                <th> file</th>
-                                <th> statut</th>
-                                <th> send_date</th>
-                                <th> answer_date</th>
-                                <th> comment_WG</th>
-                                <th> comment_client</th>
-                            </tr>
-                            {% for model in all_attachments %}
-                                <tr>
-                                    <td><a href="#"><p class="form-control-static">{{model.attachment.sort}}<p></a></td>
-                                    <td><a href="">{{model.attachment.file}}</a></td>
-                                    <td><a href="">{{model.attachment.statut}}</a></td>
-                                    <td>{{model.attachment.send_date}}</td>
-                                    <td>{{model.attachment.answer_date}}</td>
-                                    <td>{{model.attachment.comment_WG}}</td>
-                                    <td>{{model.attachment.comment_client}}</td>
-                                </tr>
-                            {% endfor %}
-                        </table>
-                    </div>
-                {% else %}
-                    <p> Keine Attachments </p>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
         <!-- TABLA de Modelos relacionados a projecto   -->
     <div class="container">
         <br>
         <div class="panel panel-warning">
-            <div class="panel-heading"><h3>Asignment form {{project.name}} </h3></div>
+            <div class="panel-heading"><h3>Models</h3></div>
             <div class="panel-body">
-                {% if all_assignments %}
+                {% if all_models %}
                     <div class="table-responsive">
                         <table class="table table-hover ">
                             <tr class="active table-bordered">
-                                <th > Name</th>
-                                <th> Telefonnummer</th>
-                                <th> Email</th>
-                                <th> Status</th>
-                                <th> Card</th>
+                                <th >Name</th>
+                                <th>Telefonnummer</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Card</th>
                             </tr>
-                            {% for model in all_assignments %}
+                            {% for model in all_models %}
                                 <tr>
-                                    <td><a href="#"><p class="form-control-static">{{model.person.name}}<p></a></td>
+                                    <td><a href="{% url 'detail_assignment' model.id %}">{{model.person.name}}</a></td>
                                     <td><a href="tel:{{ model.person.phone }}">{{model.person.phone}}</a></td>
                                     <td><a href="mailto:{{ model.person.email }}">{{model.person.email}}</a></td>
                                     <td>{{model.statut}}</td>
@@ -275,29 +239,66 @@
         </div>
     </div>
 
+
+    <!-- TABLA de Attachments relacionados a projecto   -->
+    <div class="container">
+        <br>
+        <div class="panel panel-warning">
+            <div class="panel-heading"><h3>Attachments</h3></div>
+            <div class="panel-body">
+                {% if all_attachments %}
+                    <div class="table-responsive">
+                        <table class="table table-hover ">
+                            <tr class="active table-bordered">
+                                <th > sort</th>
+                                <th> statut</th>
+                                <th> send_date</th>
+                                <th> answer_date</th>
+                                <th> comment_WG</th>
+                                <th> comment_client</th>
+                            </tr>
+                            {% for att in all_attachments %}
+                                <tr>
+                                    <td><a href={{att.file.url}}>{{att.sort}}</a></td>
+                                    <td>{{att.statut}}</td>
+                                    <td>{{att.send_date}}</td>
+                                    <td>{{att.answer_date}}</td>
+                                    <td>{{att.comment_WG}}</td>
+                                    <td>{{att.comment_client}}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                {% else %}
+                    <p> Keine Attachments </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
             <!-- COSTO   -->
     <div class="container">
         <br>
         <div class="panel panel-warning">
-            <div class="panel-heading"><h3>cost form {{project.name}} </h3></div>
+            <div class="panel-heading"><h3>Costs</h3></div>
             <div class="panel-body">
                 {% if all_costs %}
                     <div class="table-responsive">
                         <table class="table table-hover ">
                             <tr class="active table-bordered">
-                                <th > Name</th>
-                                <th> Telefonnummer</th>
-                                <th> Email</th>
-                                <th> Status</th>
-                                <th> Card</th>
+                                <th>Date</th>
+                                <th>Cost</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Comment</th>
                             </tr>
-                            {% for model in all_costs %}
+                            {% for cost in all_costs %}
                                 <tr>
-                                    <td><a href="#"><p class="form-control-static">{{model.person.name}}<p></a></td>
-                                    <td><a href="tel:{{ model.person.phone }}">{{model.person.phone}}</a></td>
-                                    <td><a href="mailto:{{ model.person.email }}">{{model.person.email}}</a></td>
-                                    <td>{{model.statut}}</td>
-                                    <td>{{model.person.sedcard}}</td>
+                                    <td>{{cost.date}}</td>
+                                    <td>{{cost.title}}</td>
+                                    <td>{{cost.amount}}</td>
+                                    <td>{{cost.statut}}</td>
+                                    <td>{{cost.comment}}</td>
                                 </tr>
                             {% endfor %}
                         </table>

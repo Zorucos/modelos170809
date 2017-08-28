@@ -28,7 +28,7 @@
                             <td><a href="{% url 'detail_client' client.id %}" ><p class="form-control-static">{{client.name}}</p></a></td>
                             <td><a href=""></a><p class="form-control-static">{{client.company}}</p></a></td>
                             <td><a href="mailto:{{ client.email }}"><p class="form-control-static">{{client.email}}</p></a></td>
-                            <td><a href="tel:{{ client.telephone }}"><p class="form-control-static">{{client.telephone}}</p></a></td>
+                            <td><a href="tel:{{ client.phone }}"><p class="form-control-static">{{client.phone}}</p></a></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -60,10 +60,10 @@
                                 </div>
                             </td>
                             <td><a href="{% url 'detail_model' persona.id %}" ><p class="form-control-static">{{persona.name}}</p></a></td>
-                            <td><a href=""></a><p class="form-control-static">{{persona.statut }}</p></a></td>
+                            <td><a href=""></a><p class="form-control-static">{{persona.address }}, {{persona.zip_code }}, {{persona.city }}, {{persona.country }}</p></a></td>
                             <td><a href="mailto:{{ persona.email }}"><p class="form-control-static">{{persona.email}}</p></a></td>
                             <td><a href="tel:{{ persona.telephone }}"><p class="form-control-static">{{persona.phone}}</p></a></td>
-                            <td><a href=""></a><p class="form-control-static">{{persona.tipo}}</p></a></td>
+                            <td><a href=""></a><p class="form-control-static">{{persona.statut}}</p></a></td>
                         </tr>
                     {% endfor %}
                 </table>

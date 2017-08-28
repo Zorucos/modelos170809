@@ -4,8 +4,28 @@
 		"selected_items":
 		[
 			[
+				"sta",
+				"STATIC_URL"
+			],
+			[
+				"url",
+				"urlpatterns\tstatement"
+			],
+			[
+				"set",
+				"settings\tinstance"
+			],
+			[
+				"st",
+				"static\tfunction"
+			],
+			[
+				"MED",
+				"MEDIA_URL"
+			],
+			[
 				"fil",
-				"filter"
+				"file\tstatement"
 			],
 			[
 				"file",
@@ -132,16 +152,34 @@
 	"buffers":
 	[
 		{
+			"contents": "{% extends 'apli/base.html' %}\n{% block body %}\n    <div class=\"container\">\n        <h1><small>Projekt:</small> {{project.name}}</h1>\n    </div>\n\n    <!-- BOTONES PARA EDITAR ELIMINAR VENTANAS DESPEGABLES -->\n    <div class=\"container  modal-header\">\n        <div class=\"row\">\n            <!-- EDITAR -->\n            <a href=\"#\" <button type=\"submit\" class=\"btn btn-success btn-xs glyphicon glyphicon-pencil col-md-offset-10\" data-toggle=\"modal\"></a>\n            <!-- ELIMINAR -->\n            <a href=\"#\" <button type=\"submit\" class=\"btn btn-danger btn-xs glyphicon glyphicon-trash col-md\" data-toggle=\"modal\"></a>\n            <!-- Imprimir -->\n            <a href=\"#\" <button type=\"submit\" class=\"btn btn-info btn-xs glyphicon glyphicon-send col-md\" data-toggle=\"modal\"></a>\n            <!-- CREAR PDF -->\n            <a href=\"{% url 'pdf_rechnung' project.id %}\" <button type=\"submit\" class=\"btn btn-warning btn-xs glyphicon glyphicon-file col-md\" data-toggle=\"modal\"></a>\n        </div>\n    </div>\n\n    <!-- INFORMACION DE CLIENTE  -->\n    <div class= \"container\">\n        <br>\n        <div class=\"row\">\n            <div class=\"container col-md-4\">\n                <h4><b>Kunde:</b> {{project.client}}</h4>\n            </div>\n            <div class=\"container  col-md-4\">\n                <h4><b>Date start:</b> {{project.start}}</h4>\n            </div>\n            <div class=\"container  col-md-4\">\n                <h4><b>Date finish:</b> {{project.finish}}</h4>\n            </div>\n            <div class=\"container  col-md-4\">\n                <h4><b>Preis (€):</b> {{project.total_price}}</h4>\n            </div>\n        </div>\n        <br>\n        <div class=\"row\">\n            <div class=\"container  col-md-4\">\n                <h4><b>Typ projekt:</b>xxx</h4>\n            </div>\n\n            <div class=\"container  col-md-4\">\n                <h4><b>Verantwortliche:</b>xxx</h4>\n            </div>\n\n            <div class=\"container  col-md-4\">\n                <h4><b>Archivzettel:</b>xxx\n        </div>\n        <br>\n        <div class=\"row\">\n            <div class=\"container  col-md-4\">\n                <h4><b>Notiz: </b>xxx</h4>\n            </div>\n         <div class=\"row modal-header\"></div>\n    </div>\n    <br>\n\n    <!-- TABLA de Modelos relacionados a projecto   -->\n    <div class=\"container\">\n        <br>\n        <div class=\"panel panel-warning\">\n            <div class=\"panel-heading\"><h3>Modelle das haben mit die Projekt gearbeitet</h3></div>\n            <div class=\"panel-body\">\n                {% if all_models %}\n                    <div class=\"table-responsive\">\n                        <table class=\"table table-hover \">\n                            <tr class=\"active table-bordered\">\n                                <th > Name</th>\n                                <th> Telefonnummer</th>\n                                <th> Email</th>\n                                <th> Status</th>\n                                <th> Card</th>\n                            </tr>\n                            {% for model in all_models %}\n                                <tr>\n                                    <td><a href=\"#\"><p class=\"form-control-static\">{{model.person.name}}<p></a></td>\n                                    <td><a href=\"tel:{{ model.person.phone }}\">{{model.person.phone}}</a></td>\n                                    <td><a href=\"mailto:{{ model.person.email }}\">{{model.person.email}}</a></td>\n                                    <td>{{model.statut}}</td>\n                                    <td>{{model.person.sedcard}}</td>\n                                </tr>\n                            {% endfor %}\n                        </table>\n                    </div>\n                {% else %}\n                    <p> Keine Projekte </p>\n                {% endif %}\n            </div>\n        </div>\n    </div>\n{% endblock %}\n",
 			"file": "apli/templates/apli/detail_project.html",
+			"file_size": 3950,
+			"file_write_time": 131482224057596650,
 			"settings":
 			{
-				"buffer_size": 3856,
+				"buffer_size": 3855,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "{% extends 'apli/base.html' %}\n{% block title %}Search{% endblock %}\n\n{% block body %}\n    <div class=\"container\">\n        {% if busca_clients %}\n            <p><h1>Clientes</h1></p>\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped table-hover table-condensed table-bordered\">\n                    <tr class=\"active info\"> <!--Ventana emergente de boton de  para crear neuvo usuario.  -->\n                        <th></th>\n                        <th><h3 class=\"form-control-static\">Name</h3></th>\n                        <th><h3 class=\"form-control-static\">Firma</h3></th>\n                        <th><h3 class=\"form-control-static\">Mail</h3></th>\n                        <th><h3 class=\"form-control-static\">Telefonnummer</h3></th>\n\n                    </tr>\n\n                    {% for client in busca_clients %}\n                        <tr>\n                            <td>\n                                <div class=\" btn-group-xs\">\n                                    <div class=\"\">\n                                        <a href=\"{% url 'detail_client' client.id %}\" class=\"btn btn-link btn-link glyphicon glyphicon-search\"></a>\n                                    </div>\n                                </div>\n                            </td>\n                            <td><a href=\"{% url 'detail_client' client.id %}\" ><p class=\"form-control-static\">{{client.name}}</p></a></td>\n                            <td><a href=\"\"></a><p class=\"form-control-static\">{{client.company}}</p></a></td>\n                            <td><a href=\"mailto:{{ client.email }}\"><p class=\"form-control-static\">{{client.email}}</p></a></td>\n                            <td><a href=\"tel:{{ client.telephone }}\"><p class=\"form-control-static\">{{client.telephone}}</p></a></td>\n                        </tr>\n                    {% endfor %}\n                </table>\n            </div>\n        {% endif %}\n    </div>\n\n    <div class=\"container\">\n        {% if busca_personas %}\n            <p><h1>Personas</h1></p>\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped table-hover table-condensed table-bordered\">\n                    <tr class=\"active info\"> <!--Ventana emergente de boton de  para crear neuvo usuario.  -->\n                        <th></th>\n                        <th><h3 class=\"form-control-static\">Name</h3></th>\n                        <th><h3 class=\"form-control-static\">Address</h3></th>\n                        <th><h3 class=\"form-control-static\">Mail</h3></th>\n                        <th><h3 class=\"form-control-static\">Telefonnummer</h3></th>\n                        <th><h3 class=\"form-control-static\">Tipo</h3></th>\n                    </tr>\n\n                    {% for persona in busca_personas %}\n                        <tr>\n                            <td>\n                                <div class=\" btn-group-xs\">\n                                    <div class=\"\">\n                                        <a href=\"{% url 'detail_model' persona.id %}\" class=\"btn btn-link btn-link glyphicon glyphicon-search\"></a>\n                                    </div>\n                                </div>\n                            </td>\n                            <td><a href=\"{% url 'detail_model' persona.id %}\" ><p class=\"form-control-static\">{{persona.nombre_completo}}</p></a></td>\n                            <td><a href=\"\"></a><p class=\"form-control-static\">{{persona.adresse}}</p></a></td>\n                            <td><a href=\"mailto:{{ persona.email }}\"><p class=\"form-control-static\">{{persona.email}}</p></a></td>\n                            <td><a href=\"tel:{{ persona.telephone }}\"><p class=\"form-control-static\">{{persona.telephone}}</p></a></td>\n                            <td><a href=\"\"></a><p class=\"form-control-static\">{{persona.tipo}}</p></a></td>\n                        </tr>\n                    {% endfor %}\n                </table>\n            </div>\n        {% endif %}\n    </div>\n\n    <div class=\"container\">\n        {% if busca_proyectos %}\n            <p><h1>Proyectos</h1></p>\n            <div class=\"table-responsive\">\n                <table class=\"table table-striped table-hover table-condensed table-bordered\">\n                    <tr class=\"active info\"> <!--Ventana emergente de boton de  para crear neuvo usuario.  -->\n                        <th></th>\n                        <th><h3 class=\"form-control-static\">Name</h3></th>\n                        <th><h3 class=\"form-control-static\">Client</h3></th>\n                        <th><h3 class=\"form-control-static\">Date</h3></th>\n                        <th><h3 class=\"form-control-static\">Comment</h3></th>\n\n                    </tr>\n\n                    {% for proyecto in busca_proyectos %}\n                        <tr>\n                            <td>\n                                <div class=\" btn-group-xs\">\n                                    <div class=\"\">\n                                        <a href=\"{% url 'detail_project' proyecto.id %}\" class=\"btn btn-link btn-link glyphicon glyphicon-search\"></a>\n                                    </div>\n                                </div>\n                            </td>\n                            <td><a href=\"{% url 'detail_project' proyecto.id %}\" ><p class=\"form-control-static\">{{proyecto.nombre}}</p></a></td>\n                            <td><a href=\"\"></a><p class=\"form-control-static\">{{proyecto.client}}</p></a></td>\n                            <td><a href=\"\"></a><p class=\"form-control-static\">{{proyecto.fecha_creacion}}</p></a></td>\n                            <td><a href=\"\"></a><p class=\"form-control-static\">{{proyecto.comment}}</p></a></td>\n                        </tr>\n                    {% endfor %}\n                </table>\n            </div>\n        {% endif %}\n    </div>\n{% endblock %}\n",
+			"file": "apli/templates/apli/busca.html",
+			"file_size": 5970,
+			"file_write_time": 131482299542431417,
+			"settings":
+			{
+				"buffer_size": 5863,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "{% extends 'apli/base.html' %}\n{% block title %}Contacts{% endblock %}\n{% block clients_active %}active{% endblock %}\n\n{% block body %}\n    <div class=\"container\">\n        <h1><small>Kunde/in:</small> {{client.name}}</h1>\n    </div>\n\n    <!-- BOTONES PARA EDITAR ELIMINAR VENTANAS DESPEGABLES -->\n    <div class=\"container  modal-header\">\n        <div class=\"row\">\n            <!-- EDITAR -->\n            <a href=\"{% url 'client_update' client.id %}\" <button type=\"submit\" class=\"btn btn-success btn-xs glyphicon glyphicon-pencil col-md-offset-10\" data-toggle=\"modal\"></a>\n\n            <!-- ELIMIMINAR -->\n            <a href=\"{% url 'client_delete' client.id %}\" <button type=\"submit\" class=\"btn btn-danger btn-xs glyphicon glyphicon-trash col-md\" data-toggle=\"modal\"></a>\n\n            <!-- CREAR PDF -->\n            <a href=\"#ventana3\" <button type=\"submit\" class=\"btn btn-warning btn-xs glyphicon glyphicon-file col-md\" data-toggle=\"modal\"></a>\n        </div>\n    </div>\n\n    <!-- INFORMACION DE CLIENTE  -->\n    <div class= \"container\">\n        <br>\n        <div class=\"row\">\n            <div class=\"container col-md-4\">\n                <h4><b>Firma:</b> {{client.company}}</h4>\n            </div>\n            <div class=\"container col-md-4\">\n                <h4><b>Telefonummer:</b> <a href=\"tel:{{ client.phone }}\">{{client.phone}}</a></h4>\n            </div>\n            <div class=\"container  col-md-4\">\n                <h4><b>Email:</b> <a href=\"mailto:{{ client.email }}\">{{client.email}}</a></h4>\n            </div>\n        </div>\n        <br>\n        <div class=\"row\">\n            <div class=\"container col-md-4\">\n                <h4><b>Kunde/in Suchename:</b> {{client.name_short}}</h4>\n            </div>\n            <div class=\"container  col-md-4\">\n                <h4><b>Firma Suchename:</b> {{client.company_short}}</h4>\n            </div>\n        </div>\n        <br>\n        <div class=\"row\">\n            <div class=\"container  col-md-4\">\n                <h3 class=\"form-control-static\"><b>Adresse</b> </h3>\n            </div>\n\n            <div class=\"container  col-md-4\">\n                <h4 class=\"form-control-static\" ><b>Land:</b> {{client.country}}</h4>\n             </div>\n\n            <div class=\"container  col-md-4\">\n                <h4 class=\"form-control-static\"><b>Stadt:</b> {{client.city}}\n            </div>\n\n            </h4><div class=\"container  col-md-4\">\n                <h4 class=\"form-control-static\"><b>Straße:</b> {{client.address}}\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"container  col-md-8\">\n                <h4 class=\"form-control-static\"><b> Notiz:</b>{{client.comment}} </h4>\n            </div>\n        </div>\n    </div>\n    <div class=\"row modal-header\"></div>\n    <br>\n\n    <!-- PANEL con TABLA de PROYECTOS relacionados con cliente  -->\n    <br>\n    <div class=\"container\">\n        <div class=\"panel panel-info\">\n            <div class=\"panel-heading\">\n                <h3>Projekte vom   {{client.nombre_completo}}</h3>\n            </div>\n            <div class=\"panel-body\">\n                {% if all_projects %}\n                    <div class=\"table-responsive\">\n                        <table class=\"table table-hover  \">\n                            <tr class=\"active table-bordered\">\n                                <th>Projektname</th>\n                                <th>Price</th>\n                                <th>Datum Start</th>\n                                <th>Datum Finish</th>\n                                <th>Status</th>\n                                <th>Notiz</th>\n                            </tr>\n                            {% for project in all_projects %}\n                                <tr>\n                                    <td><a href=\"{% url 'detail_project' project.id %}\"><p class=\"form-control-static\">{{project.name}}<p></a></td>\n                                    <td><a><p class=\"form-control-static\">{{project.total_price}}<p></a></td>\n                                    <td><p class=\"form-control-static\">{{project.start}}<p></td>\n                                    <td><p class=\"form-control-static\">{{project.finish}}<p></td>\n                                    <td><p class=\"form-control-static\">{{project.statut}}<p></td>\n                                    <td><p class=\"form-control-static\">{{project.comment}}<p></td>\n                                </tr>\n                            {% endfor %}\n                        </table>\n                    </div>\n                {% else %}\n                    <p> Keine Projekte </p>\n                {% endif %}\n            </div>\n        </div>\n    </div>\n{% endblock %}\n",
 			"file": "apli/templates/apli/detail_client.html",
+			"file_size": 4780,
+			"file_write_time": 131481364130796398,
 			"settings":
 			{
 				"buffer_size": 4668,
@@ -153,8 +191,40 @@
 			"file": "apli/urls.py",
 			"settings":
 			{
-				"buffer_size": 3058,
+				"buffer_size": 3502,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "WG/urls.py",
+			"settings":
+			{
+				"buffer_size": 854,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "WG/settings/base.py",
+			"settings":
+			{
+				"buffer_size": 4081,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "WG/settings/local.py",
+			"settings":
+			{
+				"buffer_size": 3960,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "WG/settings/production.py",
+			"settings":
+			{
+				"buffer_size": 4103,
 				"line_ending": "Windows"
 			}
 		},
@@ -162,8 +232,16 @@
 			"file": "apli/views.py",
 			"settings":
 			{
-				"buffer_size": 9106,
+				"buffer_size": 10577,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "apli/utils.py",
+			"settings":
+			{
+				"buffer_size": 861,
 				"line_ending": "Windows"
 			}
 		},
@@ -171,7 +249,7 @@
 			"file": "apli/models.py",
 			"settings":
 			{
-				"buffer_size": 8177,
+				"buffer_size": 8298,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -241,15 +319,20 @@
 	[
 		"/E/modelos170809",
 		"/E/modelos170809/apli",
-		"/E/modelos170809/apli/migrations/__pycache__",
-		"/E/modelos170809/apli/static/apli",
 		"/E/modelos170809/apli/templates",
-		"/E/modelos170809/apli/templates/apli",
-		"/E/modelos170809/fullcalendar/migrations",
-		"/E/modelos170809/fullcalendar/migrations/__pycache__"
+		"/E/modelos170809/media",
+		"/E/modelos170809/WG",
+		"/E/modelos170809/WG/settings"
 	],
 	"file_history":
 	[
+		"/E/modelos170809/WG/settings/email_info.py",
+		"/E/modelos170809/nombre.pdf",
+		"/E/modelos170809/WG/settings/local.py",
+		"/E/modelos170809/WG/settings/production.py",
+		"/E/modelos170809/WG/settings/base.py",
+		"/E/modelos170809/nombre_NrXIRsi.pdf",
+		"/E/modelos170809/fullcalendar/static/fullcalendar/fullcalendar.js",
 		"/E/modelos170809/apli/templates/apli/index_project.html",
 		"/E/modelos170809/apli/templates/apli/client_form.html",
 		"/E/modelos170809/apli/forms.py",
@@ -370,14 +453,7 @@
 		"/E/DG - Copie/DG/urls.py",
 		"/E/DG - Copie/manage.py",
 		"/E/DG - Copie/apli/tests.py",
-		"/E/DG - Copie/DG/settings.py",
-		"/E/DG - Copie/DG/wsgi.py",
-		"/E/DG - Copie/contact/urls.py",
-		"/E/DG - Copie/contact/admin.py",
-		"/E/DG - Copie/contact/__init__.py",
-		"/E/DG - Copie/contact/templates/apli/index.html",
-		"/E/DG - Copie/contact/tests.py",
-		"/E/DG - Copie/contact/models.py"
+		"/E/DG - Copie/DG/settings.py"
 	],
 	"find":
 	{
@@ -395,6 +471,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"render_to_pdf",
+			"kwargs",
+			"Project",
+			"contact",
 			"statut",
 			"total_price",
 			"contact",
@@ -475,7 +555,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -484,15 +564,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3856,
+						"buffer_size": 3855,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2643,
-								2643
+								742,
+								742
 							]
 						],
 						"settings":
@@ -502,14 +582,44 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1464.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "apli/templates/apli/busca.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5863,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1418,
+								1418
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 232.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "apli/templates/apli/detail_client.html",
 					"semi_transient": false,
 					"settings":
@@ -521,8 +631,8 @@
 						"selection":
 						[
 							[
-								3756,
-								3867
+								437,
+								443
 							]
 						],
 						"settings":
@@ -532,57 +642,72 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1800.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "apli/urls.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3058,
+						"buffer_size": 3502,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1096,
-								1096
+								52,
+								52
 							]
 						],
 						"settings":
 						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
 							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 216.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "apli/views.py",
+					"buffer": 4,
+					"file": "WG/urls.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9106,
+						"buffer_size": 854,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5078,
-								5088
+								854,
+								854
 							]
 						],
 						"settings":
@@ -603,27 +728,207 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3136.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "WG/settings/base.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4081,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3563,
+								3735
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3075.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "apli/models.py",
+					"buffer": 6,
+					"file": "WG/settings/local.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8177,
+						"buffer_size": 3960,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4924,
-								4931
+								3337,
+								3337
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2775.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "WG/settings/production.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4103,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3822,
+								3822
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3450.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "apli/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10577,
+								10577
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1112.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "apli/utils.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 861,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								548,
+								531
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "apli/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5958,
+								5958
 							]
 						],
 						"settings":
@@ -644,10 +949,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1789.0,
+						"translation.y": 2550.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -655,7 +960,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 32.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -692,7 +997,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 60.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -3,6 +3,8 @@ from django.contrib import admin
 #from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 from apli.views import (ClienteCreateView, GeneratePDF, SubscrptionView)
@@ -20,3 +22,7 @@ urlpatterns = [
 	url(r'^pdf/(?P<pk>[0-9]+)/$', GeneratePDF.as_view(), name='pdf_rechnung'),
     url(r'^email/(?P<pk>[0-9]+)/$', SubscrptionView, name="email_send"), # mail envio
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
