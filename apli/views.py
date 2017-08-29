@@ -14,7 +14,7 @@ from django.conf import settings # mail
 from django.http import HttpResponse
 from .forms import UserForm, ClientCreateForm, PersonCreateForm
 from .utils import render_to_pdf # PDF
-from .models import Client, Person, Project, Attachment, Assignment
+from .models import Client, Person, Project, Attachment, Assignment, Cost, Horaire
 from django.http import HttpResponseRedirect
 from django.core.mail import EmailMultiAlternatives
 from datetime import date
@@ -121,7 +121,7 @@ def index_person(request):
 @login_required(login_url='/register/login/')
 def index_project(request):
     all_projects = Project.objects.all()
-    return render(request, 'apli/index_project.html', {'all_projects': all_projects})
+    return render(request, 'apli/angebot/index_angebot.html', {'all_projects': all_projects})
 
 
 @login_required(login_url='/register/login/')
@@ -141,6 +141,16 @@ def index_job(request):
     all_projects = Project.objects.all().filter(sort='job')
     return render(request, 'apli/job/index_job.html', {'all_projects': all_projects})
 
+@login_required(login_url='/register/login/')
+def index_cost(request):
+    all_costs = Cost.objects.all().filter(sort='')
+    return render(request, 'apli/cost/index_cost.html', {'all_costs': all_costs})
+
+@login_required(login_url='/register/login/')
+def index_assignment(request):
+    all_assignments = Assignment.objects.all().filter(sort='')
+    return render(request, 'apli/job/index_assignments.html', {'all_assignments': all_assignments})
+
 
 @login_required(login_url='/register/login/')
 def detail_client(request, pk):
@@ -148,6 +158,10 @@ def detail_client(request, pk):
     all_projects = client.project_set.all()
     return render(request, 'apli/Client/detail_client.html', {'client': client, 'all_projects': all_projects})
 
+@login_required(login_url='/register/login/')
+def detail_cost(request, pk):
+    model = get_object_or_404(Cost, id=pk)
+    return render(request, 'apli/cost/detail_cost.html', {'cost': cost})
 
 @login_required(login_url='/register/login/')
 def detail_model(request, pk):
@@ -158,6 +172,12 @@ def detail_model(request, pk):
 def detail_person(request, pk):
     model = get_object_or_404(Person, id=pk)
     return render(request, 'apli/person/detail_person.html', {'model': model})
+
+@login_required(login_url='/register/login/')
+def detail_assignment(request, pk):
+    assignment = get_object_or_404(Assignment, id=pk)
+    all_horaire = assignment.horaire_set.all()
+    return render(request, 'apli/assignment/detail_assignment.html', {'assignment': assignment, 'all_horaire': all_horaire})
 
 
 @login_required(login_url='/register/login/')
@@ -259,7 +279,33 @@ class PersonDelete(LoginRequiredMixin, DeleteView):
     model = Person
     success_url = reverse_lazy('index_person')
 
+# crear, nueva info y delete assignment
 
+class AssignmentCreate(LoginRequiredMixin, CreateView):
+    model = Assignment
+
+    fields = ['project', 'person', 'model_type', 'travel_cost', 'hotel_cost', 'other_cost', 'comment_WG', 'statut', 'send_date', 'payment_date', 'total_price']
+class AssignmentUpdate(LoginRequiredMixin, UpdateView):
+    model = Assignment
+    fields = ['project', 'person', 'model_type', 'travel_cost', 'hotel_cost', 'other_cost', 'comment_WG', 'statut', 'send_date', 'payment_date', 'total_price']
+
+
+class AssignmentDelete(LoginRequiredMixin, DeleteView):
+    model = Assignment
+    success_url = reverse_lazy('index_assignment')
+
+class CostCreate(LoginRequiredMixin, CreateView):
+    model = Cost
+
+    fields = ['user', 'project', 'comment', 'date', 'amount', 'title', 'statut']
+class CostUpdate(LoginRequiredMixin, UpdateView):
+    model = Cost
+    fields = ['user', 'project', 'comment', 'date', 'amount', 'title', 'statut']
+
+
+class CostDelete(LoginRequiredMixin, DeleteView):
+    model = Cost
+    success_url = reverse_lazy('index_cost')
 
 
     
@@ -279,6 +325,21 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
     success_url = reverse_lazy('index_project')
 
+
+# HOARIO
+class HoraireCreate(LoginRequiredMixin, CreateView):
+    model = Horaire
+    fields = ['assignment', 'date', 'start_time', 'finish_time']
+
+
+class HoraireUpdate(LoginRequiredMixin, UpdateView):
+    model = Horaire
+    fields = ['assignment', 'date', 'start_time', 'finish_time']
+
+
+class HoraireDelete(LoginRequiredMixin, DeleteView):
+    model = Horaire
+    success_url = reverse_lazy('index_project')
 
 def project_send(request, pk):
     project = get_object_or_404(Project, id=pk)
@@ -310,8 +371,4 @@ def project_send(request, pk):
     return render(request, 'apli/angebot/detail_angebot.html', {'project': project, 'all_models': all_models, 'all_attachments': all_attachments, 'all_costs': all_costs})
 
 
-@login_required(login_url='/register/login/')
-def detail_assignment(request, pk):
-    assignment = get_object_or_404(Assignment, id=pk)
-    all_horaire = assignment.horaire_set.all()
-    return render(request, 'apli/assignment/detail_assignment.html', {'assignment': assignment, 'all_horaire': all_horaire})
+

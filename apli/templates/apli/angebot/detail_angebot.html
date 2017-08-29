@@ -1,7 +1,8 @@
 {% extends 'apli/base.html' %}
 {% block body %}
     <div class="container">
-        <h1><small>Projekt:</small> {{project.name}}</h1>
+        <h1><small>Projekt:</small> {{project.name}}     <a href="{% url 'assignment_new' %}" <button type="submit" class=" alert alert-secondary btn-md "><span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span></a>  <a href="{% url 'cost_new' %}" <button type="submit" class="alert alert-dark btn-md "><span class="glyphicon glyphicon glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> </a></h1>
+
     </div>
 
     <!-- BOTONES PARA EDITAR ELIMINAR VENTANAS DESPEGABLES -->
@@ -294,7 +295,7 @@
                             </tr>
                             {% for cost in all_costs %}
                                 <tr>
-                                    <td>{{cost.date}}</td>
+                                    <td><a href="{% url 'detail_cost' cost.id %}">{{cost.date}}</td>
                                     <td>{{cost.title}}</td>
                                     <td>{{cost.amount}}</td>
                                     <td>{{cost.statut}}</td>

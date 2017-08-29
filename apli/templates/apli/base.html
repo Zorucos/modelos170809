@@ -50,14 +50,14 @@
 
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle {% block cotizaciones_active %}{% endblock %}" data-toggle="dropdown" role="button" aria-expanded="false">
-                                            <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-briefcase" aria-hidden="true" class="{% block projects_active %}{% endblock %}"></span>
                                             Projekt
                                             <span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li role="presentation" class=""><a href="{% url 'index_angebot' %}"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span> Angebot</a></li>
                                             <li role="presentation" class="{% block ordenes_active %}{% endblock %}"><a href="{% url 'index_aufttrag' %}"><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span> Auftrag</a></li>
-                                            <li role="presentation" class="{% block projects_active %}{% endblock %}"><a href="{% url 'index_job' %}"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Job</a></li>
+                                            <li role="presentation" class="{% block projectss_active %}{% endblock %}"><a href="{% url 'index_job' %}"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Job</a></li>
                                         </ul>
                                     </li>
 

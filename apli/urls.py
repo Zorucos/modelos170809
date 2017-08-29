@@ -64,8 +64,43 @@ urlpatterns = [
     url(r'^project/(?P<pk>[0-9]+)/send/$', views.project_send, name='project_send'),
 
 
-    # /assignment/<id>
+
     url(r'^assignment/(?P<pk>[0-9]+)/$', views.detail_assignment, name='detail_assignment'),
+    # /project llamado de 
+
+    #assignment
+    url(r'^assignment/$', views.index_assignment, name='index_assignment'),
+    url(r'^assignment/new/$', views.AssignmentCreate.as_view(), name='assignment_new'),
+    # /project/<id>/update/
+    url(r'^assignment/(?P<pk>[0-9]+)/update/$', views.AssignmentUpdate.as_view(), name='assignment_update'),
+    # /project/<id>/delete/
+    url(r'^assignment/(?P<pk>[0-9]+)/delete/$', views.AssignmentDelete.as_view(), name='assignment_delete'),
+    # /project/<id>/send/
+    #url(r'^assignment/(?P<pk>[0-9]+)/send/$', views.Assignment_send, name='assignment_send'),
+
+
+    # horarie
+
+    url(r'^horaire/new/$', views.HoraireCreate.as_view(), name='horaire_new'),
+    # /project/<id>/update/
+    url(r'^horaire/(?P<pk>[0-9]+)/update/$', views.HoraireUpdate.as_view(), name='horaire_update'),
+    # /project/<id>/delete/
+    url(r'^horaire/(?P<pk>[0-9]+)/delete/$', views.HoraireDelete.as_view(), name='horaire_delete'),
+    # /project/<id>/send/
+    #url(r'^assignment/(?P<pk>[0-9]+)/send/$', views.Assignment_send, name='assignment_send'),
+
+    #costo
+    url(r'^cost/(?P<pk>[0-9]+)/$', views.detail_cost, name='detail_cost'),
+    url(r'^cost/$', views.index_cost, name='index_cost'),
+    url(r'^cost/new/$', views.CostCreate.as_view(), name='cost_new'),
+    # /project/<id>/update/
+    url(r'^cost/(?P<pk>[0-9]+)/update/$', views.CostUpdate.as_view(), name='cost_update'),
+    # /project/<id>/delete/
+    url(r'^cost/(?P<pk>[0-9]+)/delete/$', views.CostDelete.as_view(), name='cost_delete'),
+    # /project/<id>/send/
+    #url(r'^assignment/(?P<pk>[0-9]+)/send/$', views.Assignment_send, name='assignment_send'),
+
+
 
 
     url(r'^prueba_email/$', views.prueba_email, name='prueba_email'),
@@ -75,7 +110,6 @@ urlpatterns = [
 
     url(r'^busca/$', views.busca, name='busca'),                                                    # /busca/
 
-    # /proyecto/new/ TEST proyecto
     url(r'^proyecto/new/$', views.ProjectCreate.as_view(), name='proyecto_new'),
 
    
