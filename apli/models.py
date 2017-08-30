@@ -164,8 +164,8 @@ class Horaire(models.Model):
         verbose_name = 'Horaire'
         verbose_name_plural = 'Horaires'
 
-    def __str__(self):
-        return self.person.name + ' - ' + self.project.name
+#    def __str__(self):
+#        return self.person.name + ' - ' + self.project.name
 
     def get_absolute_url(self):
         return reverse('detail_Horaire  ', kwargs={'pk': self.pk})
@@ -185,7 +185,7 @@ class Cost(models.Model):
         verbose_name_plural = 'Costs'
 
     def __str__(self):
-        return self.person.name + ' - ' + self.project.name
+        return self.title
 
     def get_absolute_url(self):
         return reverse('detail_cost', kwargs={'pk': self.pk})

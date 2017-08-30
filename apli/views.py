@@ -158,20 +158,24 @@ def detail_client(request, pk):
     all_projects = client.project_set.all()
     return render(request, 'apli/Client/detail_client.html', {'client': client, 'all_projects': all_projects})
 
+
 @login_required(login_url='/register/login/')
 def detail_cost(request, pk):
-    model = get_object_or_404(Cost, id=pk)
+    cost = get_object_or_404(Cost, id=pk)
     return render(request, 'apli/cost/detail_cost.html', {'cost': cost})
+
 
 @login_required(login_url='/register/login/')
 def detail_model(request, pk):
     model = get_object_or_404(Person, id=pk)
     return render(request, 'apli/model/detail_model.html', {'model': model})
 
+
 @login_required(login_url='/register/login/')
 def detail_person(request, pk):
     model = get_object_or_404(Person, id=pk)
     return render(request, 'apli/person/detail_person.html', {'model': model})
+
 
 @login_required(login_url='/register/login/')
 def detail_assignment(request, pk):
@@ -296,8 +300,8 @@ class AssignmentDelete(LoginRequiredMixin, DeleteView):
 
 class CostCreate(LoginRequiredMixin, CreateView):
     model = Cost
-
     fields = ['user', 'project', 'comment', 'date', 'amount', 'title', 'statut']
+
 class CostUpdate(LoginRequiredMixin, UpdateView):
     model = Cost
     fields = ['user', 'project', 'comment', 'date', 'amount', 'title', 'statut']
