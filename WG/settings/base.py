@@ -31,15 +31,15 @@ EMAIL_HOST = EMAIL_HOST
 EMAIL_HOST_USER = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 EMAIL_PORT = EMAIL_PORT
-# DEFAULT_FROM_EMAIL = 'Your Name <you@email.com>'
+DEFAULT_FROM_EMAIL = 'Your Name <you@email.com>'
 
-# ADMINS = (
-#     ('You', 'you@email.com'),
-# )
-# MANAGERS = ADMINS
+ADMINS = (
+    ('You', 'you@email.com'),
+)
+MANAGERS = ADMINS
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wunschgesichter.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
