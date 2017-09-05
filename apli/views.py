@@ -104,7 +104,7 @@ class ClienteCreateView(LoginRequiredMixin, CreateView):
 @login_required(login_url='/register/login/')
 def index_client(request):
     all_clients = Client.objects.all()
-    return render(request, 'apli/Client/index_client.html', {'all_clients': all_clients})
+    return render(request, 'apli/client/index_client.html', {'all_clients': all_clients})
 
 
 @login_required(login_url='/register/login/')
@@ -156,7 +156,7 @@ def index_assignment(request):
 def detail_client(request, pk):
     client = get_object_or_404(Client, id=pk)
     all_projects = client.project_set.all()
-    return render(request, 'apli/Client/detail_client.html', {'client': client, 'all_projects': all_projects})
+    return render(request, 'apli/client/detail_client.html', {'client': client, 'all_projects': all_projects})
 
 
 @login_required(login_url='/register/login/')
