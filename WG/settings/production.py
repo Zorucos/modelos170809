@@ -38,7 +38,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '3hai6a+p2b4lcdhte_82qq+weismxo#7#5sj0
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['wunschgesichter.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['modelwg.herokuapp.com', '127.0.0.1']
 # '127.0.0.1', 'localhost'
 
 # Application definition

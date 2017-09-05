@@ -39,7 +39,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 
-ALLOWED_HOSTS = ['wunschgesichter.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['modelwg.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
